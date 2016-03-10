@@ -57,8 +57,7 @@ doap:maintainer:
 requirements:
   - class: InlineJavascriptRequirement
   - $import: envvar-global.cwl
-  #Have not figured out how to work this with docker
-  #- $import: tophat2-docker.cwl
+  - $import: tophat2-docker.cwl
 
 # Inputs that tophat take 
 # I think the position determines where the commands are placed in command line
@@ -102,4 +101,5 @@ outputs:
       # The output file is align_summary.txt
       # Make sure the output files match
       glob: $(inputs.output+'/align_summary.txt')
+
 baseCommand: ["tophat"]
