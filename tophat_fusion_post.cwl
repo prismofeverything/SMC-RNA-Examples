@@ -59,114 +59,125 @@ requirements:
   - $import: envvar-global.cwl
   - $import: tophat2-docker.cwl
 
-# The position determines where the commands are placed in command line
 inputs:
 
-  ## Not required fields ##
-  #Adding the ["null",type] allows you to designate a variable that is not required,
-  #Don't input a prefix field and it won't display a prefix
+##Additional options##
 
-  - id: "#r"
-    type: ["null",int]
+
+  # Boolean values, shows prefix only
+  - id: "#skip-fusion-kmer"
+    type: boolean
+    default: false
     inputBinding:
       position: 1
-      prefix: "-r"
 
-  - id: "#p"
-    type: ["null",int]
+  - id: "#skip-filter-fusion"
+    type: boolean
+    default: false
+    inputBinding:
+      position: 1
+  
+  - id: "#skip-blast"
+    type: boolean
+    default: false
+    inputBinding:
+      position: 1
+
+  - id: "#skip-read-dist"
+    type: boolean
+    default: false
+    inputBinding:
+      position: 1
+
+  - id: "#skip-html"
+    type: boolean
+    default: false
+    inputBinding:
+      position: 1
+
+  - id: "#tex-table"
+    type: boolean
+    default: false
+    inputBinding:
+      position: 1
+
+  - id: "#num-threads"
+    type: int
+    default: 1
     description: | 
       Change number of threads used
     inputBinding:
       position: 1
       prefix: "-p"
 
-  - id: "#mate-std-dev"
-    type: ["null",int]
-    inputBinding:
-      position: 1
-      prefix: "--mate-std-dev"
-
-  - id: "#max-intron-length"
-    type: ["null",int]
-    inputBinding:
-      position: 1
-      prefix: "--max-intron-length" 
-
-  - id: "#fusion-min-dist"
-    type: ["null",int]
-    inputBinding:
-      position: 1
-      prefix: "--fusion-min-dist" 
-
-  - id: "#fusion-ignore-chromosomes"
-    type: ["null",string]
-    inputBinding:
-      position: 1
-      prefix: "--fusion-ignore-chromosomes" 
-
-  # Boolean values, shows prefix only
-  - id: "#fusion-search"
-    type: boolean
-    default: false
+  - id: "#num-fusion-reads"
+    type: int
+    default: 3
     description: | 
-      Turn on fusion algorithm (tophat-fusion)
+      Fusions with at least this many supporting reads will be reported. The default is 3.
     inputBinding:
       position: 1
-
-  - id: "#keep-fastq-order"
-    type: boolean
-    default: false
-    description: | 
-      Keep ordering of fastq file
-    inputBinding:
-      position: 1
+      prefix: "--num-fusion-reads"
   
-  - id: "#bowtie1"
-    type: boolean
-    default: false
+  - id: "#num-fusion-pairs"
+    type: int
+    default: 2
     description: | 
-      Use bowtie1
+      Fusions with at least this many supporting pairs will be reported. The default is 2.
     inputBinding:
       position: 1
+      prefix: "--num-fusion-pairs "
 
-  - id: "#no-coverage-search"
-    type: boolean
-    default: false
+  - id: "#num_fusion_both"
+    type: int
+    default: 0
     description: | 
-      Turn off coverage-search, which takes lots of memory and is slow
+      The sum of supporting reads and pairs is at least this number for a fusion to be reported. The default is 0.
     inputBinding:
       position: 1
+      prefix: "--num_fusion_both"
 
-  ## Required files ##
-  - id: "#reference"
-    type: string
-    inputBinding:
-      position: 2
-  
-  - id: "#fastq1"
-    type: File
-    inputBinding:
-      position: 3
 
-  - id: "#fastq2"
-    type: File
+  - id: "#fusion-read-mismatches"
+    type: int
+    default: 2
+    description: | 
+      Reads support fusions if they map across fusion with at most this many mismatches. The default is 2.
     inputBinding:
-      position: 4
-  
+      position: 1
+      prefix: "--fusion-read-mismatches"
+
+  - id: "#fusion-multireads"
+    type: int
+    default: 2
+    description: | 
+      Reads that map to more than this many places will be ignored. The default is 2.
+    inputBinding:
+      position: 1
+      prefix: "--fusion-multireads"
+
+
   ## output of tophat is the directory ##
   - id: "output"
     type: string
+    default: "./tophatfusion_out"
     inputBinding:
       prefix: "-o"
       position: 5
+  
+
+  ## Required files ##
+  - id: "#bowtie_index"
+    type: string
+    inputBinding:
+      position: 2
 
 
 outputs:
   - id: "#tophatOut"
     type: File
     outputBinding:
-      # The output file is align_summary.txt
-      # Make sure the output files match
-      glob: $(inputs.output+'/align_summary.txt')
+      # not exactly sure what to bind here...
+      glob: $(inputs.output/*)
 
-baseCommand: ["tophat"]
+baseCommand: ["tophat-fusion-post"]
