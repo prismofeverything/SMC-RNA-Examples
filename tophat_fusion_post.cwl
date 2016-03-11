@@ -69,37 +69,43 @@ inputs:
     type: boolean
     default: false
     inputBinding:
-      position: 1
+      position: 2
 
   - id: "#skip-filter-fusion"
     type: boolean
     default: false
     inputBinding:
-      position: 1
+      position: 2
   
   - id: "#skip-blast"
     type: boolean
     default: false
     inputBinding:
-      position: 1
+      position: 2
 
   - id: "#skip-read-dist"
     type: boolean
     default: false
     inputBinding:
-      position: 1
+      position: 2
 
   - id: "#skip-html"
     type: boolean
     default: false
     inputBinding:
-      position: 1
+      position: 2
 
   - id: "#tex-table"
     type: boolean
     default: false
     inputBinding:
-      position: 1
+      position: 2
+  
+  - id: "#non-human"
+    type: boolean
+    default: false
+    inputBinding:
+      position: 2
 
   - id: "#num-threads"
     type: int
@@ -126,17 +132,16 @@ inputs:
       Fusions with at least this many supporting pairs will be reported. The default is 2.
     inputBinding:
       position: 1
-      prefix: "--num-fusion-pairs "
+      prefix: "--num-fusion-pairs"
 
-  - id: "#num_fusion_both"
+  - id: "#num-fusion-both"
     type: int
     default: 0
     description: | 
       The sum of supporting reads and pairs is at least this number for a fusion to be reported. The default is 0.
     inputBinding:
       position: 1
-      prefix: "--num_fusion_both"
-
+      prefix: "--num-fusion-both"
 
   - id: "#fusion-read-mismatches"
     type: int
@@ -163,14 +168,14 @@ inputs:
     default: "./tophatfusion_out"
     inputBinding:
       prefix: "-o"
-      position: 5
+      position: 3
   
 
   ## Required files ##
   - id: "#bowtie_index"
     type: string
     inputBinding:
-      position: 2
+      position: 3
 
 
 outputs:
