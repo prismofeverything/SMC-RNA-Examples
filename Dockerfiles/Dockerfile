@@ -8,11 +8,5 @@ RUN apt-get -y update && \
 	apt-get install -y wget zip bzip2 && \
 	apt-get install -y tophat && \
 	apt-get install -y bowtie && \ 
-	apt-get install -y samtools && \
-	wget http://tophat-fusion.sourceforge.net/downloads/tophatfusion-0.1.0.tar.gz && \
-	tar -zxvf tophatfusion-0.1.0.tar.gz && \
-	cd tophatfusion-0.1.0/ && \
-	./configure --prefix=/path/to/install/directory/ --with-bam=/path/to/bam/directory/ &&\
-	make &&\
-	make install &&\
+	apt-get install -y samtools
 
