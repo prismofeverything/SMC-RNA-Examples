@@ -69,7 +69,7 @@ inputs:
   - id: "#r"
     type: ["null",int]
     inputBinding:
-      position: 1
+      position: 2
       prefix: "-r"
 
   - id: "#p"
@@ -77,37 +77,37 @@ inputs:
     description: | 
       Change number of threads used
     inputBinding:
-      position: 1
+      position: 2
       prefix: "-p"
 
   - id: "#mate-std-dev"
     type: ["null",int]
     inputBinding:
-      position: 1
+      position: 2
       prefix: "--mate-std-dev"
 
   - id: "#max-intron-length"
     type: ["null",int]
     inputBinding:
-      position: 1
+      position: 2
       prefix: "--max-intron-length" 
 
   - id: "#fusion-min-dist"
     type: ["null",int]
     inputBinding:
-      position: 1
+      position: 2
       prefix: "--fusion-min-dist" 
 
   - id: "#fusion-anchor-length"
     type: ["null",int]
     inputBinding:
-      position: 1
+      position: 2
       prefix: "--fusion-anchor-length" 
 
   - id: "#fusion-ignore-chromosomes"
     type: ["null",string]
     inputBinding:
-      position: 1
+      position: 2
       prefix: "--fusion-ignore-chromosomes" 
 
   # Boolean values, shows prefix only
@@ -118,7 +118,7 @@ inputs:
       Turn on fusion algorithm (tophat-fusion)
     inputBinding:
       prefix: "--fusion-search"
-      position: 1
+      position: 2
 
   - id: "#keep-fasta-order"
     type: boolean
@@ -127,7 +127,7 @@ inputs:
       Keep ordering of fastq file
     inputBinding:
       prefix: "--keep-fasta-order"
-      position: 1
+      position: 2
   
   - id: "#bowtie1"
     type: boolean
@@ -136,7 +136,7 @@ inputs:
       Use bowtie1
     inputBinding:
       prefix: "--bowtie1"    
-      position: 1
+      position: 2
 
   - id: "#no-coverage-search"
     type: boolean
@@ -145,30 +145,30 @@ inputs:
       Turn off coverage-search, which takes lots of memory and is slow
     inputBinding:
       prefix: "--no-coverage-search"    
-      position: 1
+      position: 2
 
   ## Required files ##
   - id: "#bowtie_index"
     type: string
     inputBinding:
-      position: 2
+      position: 3
   
   - id: "#fastq1"
     type: File
     inputBinding:
-      position: 3
+      position: 4
 
   - id: "#fastq2"
     type: File
     inputBinding:
-      position: 4
+      position: 5
   
   ## output of tophat is the directory ##
-  - id: "#output_folder"
+  - id: "#o"
     type: string
     inputBinding:
       prefix: "-o"
-      position: 5
+      position: 1
 
 
 outputs:
@@ -177,6 +177,6 @@ outputs:
     outputBinding:
       # The output file is align_summary.txt
       # Make sure the output files match
-      glob: $(inputs.output_folder+'/fusions.out')
+      glob: $(inputs.o+'/fusions.out')
 
 baseCommand: ["tophat"]
