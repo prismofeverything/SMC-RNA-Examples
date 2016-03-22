@@ -98,6 +98,12 @@ inputs:
       position: 1
       prefix: "--fusion-min-dist" 
 
+  - id: "#fusion-anchor-length"
+    type: ["null",int]
+    inputBinding:
+      position: 1
+      prefix: "--fusion-anchor-length" 
+
   - id: "#fusion-ignore-chromosomes"
     type: ["null",string]
     inputBinding:
@@ -111,14 +117,16 @@ inputs:
     description: | 
       Turn on fusion algorithm (tophat-fusion)
     inputBinding:
+      prefix: "--fusion-search"
       position: 1
 
-  - id: "#keep-fastq-order"
+  - id: "#keep-fasta-order"
     type: boolean
     default: false
     description: | 
       Keep ordering of fastq file
     inputBinding:
+      prefix: "--keep-fasta-order"
       position: 1
   
   - id: "#bowtie1"
@@ -127,6 +135,7 @@ inputs:
     description: | 
       Use bowtie1
     inputBinding:
+      prefix: "--bowtie1"    
       position: 1
 
   - id: "#no-coverage-search"
@@ -135,10 +144,11 @@ inputs:
     description: | 
       Turn off coverage-search, which takes lots of memory and is slow
     inputBinding:
+      prefix: "--no-coverage-search"    
       position: 1
 
   ## Required files ##
-  - id: "#reference"
+  - id: "#bowtie_index"
     type: string
     inputBinding:
       position: 2
@@ -154,7 +164,7 @@ inputs:
       position: 4
   
   ## output of tophat is the directory ##
-  - id: "output"
+  - id: "#output_folder"
     type: string
     inputBinding:
       prefix: "-o"
@@ -167,6 +177,6 @@ outputs:
     outputBinding:
       # The output file is align_summary.txt
       # Make sure the output files match
-      glob: $(inputs.output+'/align_summary.txt')
+      glob: $(inputs.output_folder+'/fusions.out')
 
 baseCommand: ["tophat"]
