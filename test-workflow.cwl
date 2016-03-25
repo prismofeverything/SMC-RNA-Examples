@@ -13,22 +13,7 @@ requirements:
   - $import: envvar-global.cwl
 
 inputs: 
-  - id: "#REFERENCE"
-    type: ["null",string]
-    inputBinding:
-      position: 2
-
-  - id: "#TUMOR_FASTQ1"
-    type: ["null",File]
-    inputBinding:
-      position: 3
-
-  - id: "#TUMOR_FASTQ2"
-    type: ["null",File]
-    inputBinding:
-      position: 3
-
-  - id: "#OUTPUT"
+  - id: REFERENCE
     type: ["null",string]
     inputBinding:
       position: 1
@@ -37,7 +22,7 @@ outputs:
 
   - id: output
     type: File
-    source: "#tophat/output"
+    source: "#tophat/tophatOut"
 
 steps:
 
@@ -45,9 +30,10 @@ steps:
     run: tophat2.cwl
     inputs:
     - {id: r, default: 20}
-    - {id: bowtie_index, default: "test_data/test_ref"}
-    - {id: fastq1, default: {class: File, path: "test_data/reads_1.fq"}}
-    - {id: fastq2, default: {class: File, path: "test_data/reads_2.fq"}}
-    - {id: o, default: "test_work"}
+    #pass in the first bowtie 2 reference
+    - {id: bowtie_index, default: {class: File, path: test_data/test_ref.1.bt2}}
+    - {id: fastq1, default: {class: File, path: test_data/reads_1.fq}}
+    - {id: fastq2, default: {class: File, path: test_data/reads_2.fq}}
+    - {id: o, default: testwork}
     outputs:
-    - {id: output}
+    - {id: tophatOut}

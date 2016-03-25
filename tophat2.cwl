@@ -63,16 +63,16 @@ requirements:
 inputs:
 
   ## Not required fields ##
-  #Adding the ["null",type] allows you to designate a variable that is not required,
+  #Adding the ["null",type] allows you to designate a variable that is not required
   #Don't input a prefix field and it won't display a prefix
 
-  - id: "#r"
+  - id: r
     type: ["null",int]
     inputBinding:
       position: 2
       prefix: "-r"
 
-  - id: "#p"
+  - id: p
     type: ["null",int]
     description: | 
       Change number of threads used
@@ -80,103 +80,116 @@ inputs:
       position: 2
       prefix: "-p"
 
-  - id: "#mate-std-dev"
+  - id: mate-std-dev
     type: ["null",int]
     inputBinding:
       position: 2
-      prefix: "--mate-std-dev"
+      prefix: --mate-std-dev
 
-  - id: "#max-intron-length"
+  - id: max-intron-length
     type: ["null",int]
     inputBinding:
       position: 2
-      prefix: "--max-intron-length" 
+      prefix: --max-intron-length
 
-  - id: "#fusion-min-dist"
+  - id: fusion-min-dist
     type: ["null",int]
     inputBinding:
       position: 2
-      prefix: "--fusion-min-dist" 
+      prefix: --fusion-min-dist
 
-  - id: "#fusion-anchor-length"
+  - id: fusion-anchor-length
     type: ["null",int]
     inputBinding:
       position: 2
-      prefix: "--fusion-anchor-length" 
+      prefix: --fusion-anchor-length
 
-  - id: "#fusion-ignore-chromosomes"
+  - id: fusion-ignore-chromosomes
     type: ["null",string]
     inputBinding:
       position: 2
-      prefix: "--fusion-ignore-chromosomes" 
+      prefix: --fusion-ignore-chromosomes
 
   # Boolean values, shows prefix only
-  - id: "#fusion-search"
+  - id: fusion-search
     type: boolean
     default: false
     description: | 
       Turn on fusion algorithm (tophat-fusion)
     inputBinding:
-      prefix: "--fusion-search"
+      prefix: --fusion-search
       position: 2
 
-  - id: "#keep-fasta-order"
+  - id: keep-fasta-order
     type: boolean
     default: false
     description: | 
       Keep ordering of fastq file
     inputBinding:
-      prefix: "--keep-fasta-order"
+      prefix: --keep-fasta-order
       position: 2
   
-  - id: "#bowtie1"
+  - id: bowtie1
     type: boolean
     default: false
     description: | 
       Use bowtie1
     inputBinding:
-      prefix: "--bowtie1"    
+      prefix: --bowtie1
       position: 2
 
-  - id: "#no-coverage-search"
+  - id: no-coverage-search
     type: boolean
     default: false
     description: | 
       Turn off coverage-search, which takes lots of memory and is slow
     inputBinding:
-      prefix: "--no-coverage-search"    
+      prefix: --no-coverage-search
       position: 2
 
   ## Required files ##
-  - id: "#bowtie_index"
-    type: string
-    inputBinding:
-      position: 3
   
-  - id: "#fastq1"
+  - id: fastq1
     type: File
     inputBinding:
       position: 4
 
-  - id: "#fastq2"
+  - id: fastq2
     type: File
     inputBinding:
       position: 5
   
   ## output of tophat is the directory ##
-  - id: "#o"
+  - id: o
     type: string
     inputBinding:
-      prefix: "-o"
+      prefix: -o
       position: 1
+
+  - id: bowtie_index
+    type: File
+      #type: array
+      #items: File
+    secondaryFiles:
+      - ^^.2.bt2
+      - ^^.3.bt2
+      - ^^.4.bt2
+      - ^^.rev.1.bt2
+      - ^^.rev.2.bt2
+    default:
+      class: File
+      path: test_data/test_ref.1.bt2
 
 
 outputs:
-  - id: "#tophatOut"
+  - id: tophatOut
     type: File
     outputBinding:
       # The output file is align_summary.txt
       # Make sure the output files match
       glob: $(inputs.o+'/align_summary.txt')
 
-baseCommand: ["tophat"]
+baseCommand: [tophat]
+arguments:
+  - valueFrom: $(inputs.bowtie_index.path.slice(0,-6))
+    position: 3
