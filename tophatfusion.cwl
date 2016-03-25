@@ -123,14 +123,14 @@ inputs:
       #type: array
       #items: File
     secondaryFiles:
-      - ^^.2.bt2
-      - ^^.3.bt2
-      - ^^.4.bt2
-      - ^^.rev.1.bt2
-      - ^^.rev.2.bt2
+      - ^^.2.ebwt
+      - ^^.3.ebwt
+      - ^^.4.ebwt
+      - ^^.rev.1.ebwt
+      - ^^.rev.2.ebwt
     default:
       class: File
-      path: test_data/test_ref.1.bt2
+      path: test_data/test_ref.1.ebwt
 
 outputs:
   - id: tophatOut

@@ -41,9 +41,9 @@ steps:
     - {id: fusion-anchor-length, default: 13}
     - {id: fusion-ignore-chromosomes, default: "chrM"}
     #pass in the first bowtie 2 reference
-    - {id: bowtie_index, default: {class: File, path: test_data/test_ref.1.bt2}}
-    - {id: fastq1, default: {class: File, path: test_data/reads_1.fq}}
-    - {id: fastq2, default: {class: File, path: test_data/reads_2.fq}}
+    - {id: bowtie_index, default: {class: File, path: bowtie_index/genome.1.ebwt}}
+    - {id: fastq1, default: {class: File, path: sim1a_30m_1.fq}}
+    - {id: fastq2, default: {class: File, path: sim1a_30m_2.fq}}
     outputs:
     - {id: tophatOut}
 
