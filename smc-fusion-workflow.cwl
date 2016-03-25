@@ -12,33 +12,17 @@ description:
 requirements:
   - $import: envvar-global.cwl
 
-inputs:
-- id: reference
-  type: File
-  description: |
-    the reference genome fasta file
-
-- id: phasedsnps
-  type: File
-  description: |
-    the phased SNPs variants vcf file
-
-- id: phasedindels
-  type: File
-  description: |
-    the phased Indels variants vcf file
-
-- id: strain
-  type: string
-
-- id: filename
-  type: string
+inputs: 
+  - id: REFERENCE
+    type: ["null",string]
+    inputBinding:
+      position: 1
 
 outputs:
 
-- id: outfile
-  type: File
-  source: "#converttobedpe/output"
+  - id: output
+    type: File
+    source: "#converttobedpe/fusionout"
 
 steps:
 
@@ -47,25 +31,26 @@ steps:
     inputs:
     - {id: p, default: 5}
     - {id: r, default: 0}
-    - {id: fusion-search, default: "fusion-search"}
-    - {id: keep-fasta-order, default: "keep-fasta-order"}
-    - {id: bowtie1, default: "bowtie1"}
+    - {id: fusion-search, default: true}
+    - {id: keep-fasta-order, default: true}
+    - {id: bowtie1, default: true}
     - {id: mate-std-dev, default: 80}
+    - {id: o, default: testwork}
     - {id: max-intron-length, default: 100000}
     - {id: fusion-min-dist, default: 100000}
     - {id: fusion-anchor-length, default: 13}
     - {id: fusion-ignore-chromosomes, default: "chrM"}
-    - {id: bowtie_index, default: "test_data/test_ref"}
-    - {id: fastq1, default: {class: File, path: "test_data/reads_1.fq"}}
-    - {id: fastq2, default: {class: File, path: "test_data/reads_2.fq"}}
-    - {id: o, default: "test_work"}
+    #pass in the first bowtie 2 reference
+    - {id: bowtie_index, default: {class: File, path: test_data/test_ref.1.bt2}}
+    - {id: fastq1, default: {class: File, path: test_data/reads_1.fq}}
+    - {id: fastq2, default: {class: File, path: test_data/reads_2.fq}}
     outputs:
-    - {id: output}
+    - {id: tophatOut}
 
   - id: converttobedpe
-    run: ../../tools/alea-insilico.cwl
+    run: convert.cwl
     inputs:
-    - {id: input, source: "#tophat/output"}
-    - {id: output, "output.txt"}
+    - {id: input, source: "#tophat/tophatOut"}
+    - {id: output, default: "output.txt"}
     outputs:
-    - {id: output}
+    - {id: fusionout}
