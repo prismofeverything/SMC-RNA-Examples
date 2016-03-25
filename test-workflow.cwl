@@ -27,7 +27,7 @@ outputs:
 steps:
 
   - id: tophat
-    run: tophat2.cwl
+    run: test-tophat2.cwl
     inputs:
     - {id: r, default: 20}
     - {id: bowtie_index, default: {class: File, path: test_data/test_ref.1.bt2}}
