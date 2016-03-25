@@ -30,7 +30,6 @@ steps:
     run: tophat2.cwl
     inputs:
     - {id: r, default: 20}
-    #pass in the first bowtie 2 reference
     - {id: bowtie_index, default: {class: File, path: test_data/test_ref.1.bt2}}
     - {id: fastq1, default: {class: File, path: test_data/reads_1.fq}}
     - {id: fastq2, default: {class: File, path: test_data/reads_2.fq}}
