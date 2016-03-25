@@ -27,7 +27,7 @@ outputs:
 steps:
 
   - id: tophat
-    run: tophat2.cwl
+    run: tophat.cwl
     inputs:
     - {id: p, default: 5}
     - {id: r, default: 0}
