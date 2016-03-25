@@ -138,7 +138,7 @@ outputs:
     outputBinding:
       # The output file is align_summary.txt
       # Make sure the output files match
-      glob: $(inputs.o+'/align_summary.txt')
+      glob: $(inputs.o+'/fusions.out')
 
 baseCommand: [tophat]
 arguments:
