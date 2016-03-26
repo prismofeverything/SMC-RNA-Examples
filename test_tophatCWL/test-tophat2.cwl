@@ -12,8 +12,8 @@ description: |
 #Import other CWL files
 requirements:
   - class: InlineJavascriptRequirement
-  - $import: envvar-global.cwl
-  - $import: tophat2-docker.cwl
+  - $import: ../envvar-global.cwl
+  - $import: ../tophat2-docker.cwl
 
 # The position determines where the commands are placed in command line
 inputs:
