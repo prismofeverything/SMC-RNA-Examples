@@ -10,13 +10,17 @@ description:
   creates custom genome from reference genome and two phased VCF files SNPs and Indels
 
 requirements:
-  - $import: envvar-global.cwl
+  - $import: ../envvar-global.cwl
 
 inputs: 
-  - id: REFERENCE
-    type: ["null",string]
-    inputBinding:
-      position: 1
+  - id: bowtie_index
+    type: File
+
+  - id: fastq1
+    type: File
+
+  - id: fastq2
+    type: File
 
 outputs:
 
