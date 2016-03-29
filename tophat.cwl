@@ -128,9 +128,6 @@ inputs:
       - ^^.4.ebwt
       - ^^.rev.1.ebwt
       - ^^.rev.2.ebwt
-    default:
-      class: File
-      path: test_data/test_ref.1.ebwt
 
 outputs:
   - id: tophatOut
@@ -142,5 +139,5 @@ outputs:
 
 baseCommand: [tophat]
 arguments:
-  - valueFrom: $(inputs.bowtie_index.path.slice(0,-6))
+  - valueFrom: $(inputs.bowtie_index.path.slice(0,-7))
     position: 3
