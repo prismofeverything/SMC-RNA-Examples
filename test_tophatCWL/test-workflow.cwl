@@ -34,9 +34,9 @@ steps:
     run: test-tophat2.cwl
     inputs:
     - {id: r, default: 20}
-    - {id: bowtie_index, default: {class: File, path: test_data/test_ref.1.bt2}}
-    - {id: fastq1, default: {class: File, path: test_data/reads_1.fq}}
-    - {id: fastq2, default: {class: File, path: test_data/reads_2.fq}}
+    - {id: bowtie_index, source: "#bowtie_index"}
+    - {id: fastq1, source: "#fastq1"}
+    - {id: fastq2, source: "#fastq2"}
     - {id: o, default: testwork}
     outputs:
     - {id: tophatOut}
