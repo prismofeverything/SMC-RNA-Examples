@@ -52,7 +52,7 @@ steps:
     - {id: tophatOut}
 
   - id: converttobedpe
-    run: convert.cwl
+    run: converter.cwl
     inputs:
     - {id: input, source: "#tophat/tophatOut"}
     - {id: output, default: "output.txt"}
