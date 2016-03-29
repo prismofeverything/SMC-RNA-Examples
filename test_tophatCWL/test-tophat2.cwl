@@ -5,9 +5,9 @@ cwlVersion: "cwl:draft-3.dev3"
 class: CommandLineTool
 
 description: |
-  tophat2.cwl is developed for SMC-RNA Challenge
+  This runs the test tophat command
+  tophat -r 20 test_data/test_ref reads_1.fq reads_2.fq
 
-  Original tool usage: #update tool usage
 
 #Import other CWL files
 requirements:
