@@ -2,7 +2,7 @@
 #
 # Author: thomas.yu@sagebase.org
 
-class: SMC-RNA fusion Workflow
+class: Workflow
 
 cwlVersion: "cwl:draft-3.dev3"
 
