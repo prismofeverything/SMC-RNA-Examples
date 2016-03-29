@@ -45,9 +45,9 @@ steps:
     - {id: fusion-anchor-length, default: 13}
     - {id: fusion-ignore-chromosomes, default: chrM}
     #pass in the first bowtie 2 reference
-    - {id: bowtie_index, source: #bowtie_index}
-    - {id: fastq1, source: #fastq1}
-    - {id: fastq2, source: #fastq2}
+    - {id: bowtie_index, source: "#bowtie_index"}
+    - {id: fastq1, source: "#fastq1"}
+    - {id: fastq2, source: "#fastq2"}
     outputs:
     - {id: tophatOut}
 
