@@ -20,3 +20,4 @@ RUN git clone https://github.com/Sage-Bionetworks/SMC-RNA-Challenge.git && \
 	cp bin/fusionToolEvaluator /usr/local/bin/ && \
 	cd ../
 
+ENV PATH /usr/local/bin/:/usr/bin:/bin
