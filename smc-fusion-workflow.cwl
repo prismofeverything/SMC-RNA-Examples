@@ -10,7 +10,10 @@ description:
   creates custom genome from reference genome and two phased VCF files SNPs and Indels
 
 requirements:
-  - $import: envvar-global.cwl
+  - class: EnvVarRequirement
+    envDef:
+    - envName: "PATH"
+      envValue: "/usr/local/bin/:/usr/bin:/bin"
 
 inputs: 
   - id: bowtie_index

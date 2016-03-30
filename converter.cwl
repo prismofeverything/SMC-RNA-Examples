@@ -12,8 +12,12 @@ description: |
 #Import other CWL files
 requirements:
   - class: InlineJavascriptRequirement
-  - $import: envvar-global.cwl
-  - $import: converter-docker.cwl
+  - class: DockerRequirement
+    dockerPull: thomasvyu/converter
+  - class: EnvVarRequirement
+    envDef:
+    - envName: "PATH"
+      envValue: "/usr/local/bin/:/usr/bin:/bin"
 
 # The position determines where the commands are placed in command line
 inputs:
