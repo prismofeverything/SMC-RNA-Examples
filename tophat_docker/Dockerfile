@@ -6,3 +6,4 @@ RUN apt-get -y update && \
 	apt-get install -y bowtie && \ 
 	apt-get install -y samtools
 
+ENV PATH /usr/local/bin/:/usr/bin:/bin

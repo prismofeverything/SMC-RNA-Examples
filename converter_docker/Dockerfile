@@ -6,3 +6,4 @@ RUN apt-get -y update && \
 	git clone https://github.com/Sage-Bionetworks/SMC-RNA-Challenge.git && \
 	cp SMC-RNA-Challenge/convert_tophapt_to_bedpe.py /usr/local/bin/
 
+ENV PATH /usr/local/bin/:/usr/bin:/bin
