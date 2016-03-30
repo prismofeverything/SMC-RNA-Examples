@@ -4,16 +4,10 @@
 
 class: Workflow
 
-cwlVersion: "cwl:draft-3.dev3"
+cwlVersion: "cwl:draft-3"
 
 description:
   creates custom genome from reference genome and two phased VCF files SNPs and Indels
-
-requirements:
-  - class: EnvVarRequirement
-    envDef:
-    - envName: "PATH"
-      envValue: "/usr/local/bin/:/usr/bin:/bin"
 
 inputs: 
   - id: bowtie_index

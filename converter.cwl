@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 
-cwlVersion: "cwl:draft-3.dev3"
+cwlVersion: "cwl:draft-3"
 
 class: CommandLineTool
 
@@ -14,10 +14,6 @@ requirements:
   - class: InlineJavascriptRequirement
   - class: DockerRequirement
     dockerPull: thomasvyu/converter
-  - class: EnvVarRequirement
-    envDef:
-    - envName: "PATH"
-      envValue: "/usr/local/bin/:/usr/bin:/bin"
 
 # The position determines where the commands are placed in command line
 inputs:
