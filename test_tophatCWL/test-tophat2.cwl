@@ -12,8 +12,12 @@ description: |
 #Import other CWL files
 requirements:
   - class: InlineJavascriptRequirement
-  - $import: ../envvar-global.cwl
-  - $import: ../tophat2-docker.cwl
+  - class: DockerRequirement
+    dockerPull: thomasvyu/tophat
+  - class: EnvVarRequirement
+    envDef:
+    - envName: "PATH"
+      envValue: "/usr/local/bin/:/usr/bin:/bin"
 
 # The position determines where the commands are placed in command line
 inputs:
