@@ -12,10 +12,9 @@ WORKDIR /opt
 RUN git clone https://github.com/Sage-Bionetworks/SMC-RNA-Challenge.git && \
 	cd SMC-RNA-Challenge && \
 	cp evaluation.py /usr/local/bin/ && \
-	cp Validator/bedpeValidator.py /usr/local/bin/ && \
 	mkdir build && \
 	cd build && \
-	cmake ../FusionEvaluator/ -DCMAKE_BUILD_TYPE=release && \
+	cmake ../FusionEvaluator_0_1_2/ -DCMAKE_BUILD_TYPE=release && \
 	make && \
 	cp bin/fusionToolEvaluator /usr/local/bin/ && \
 	cd ../

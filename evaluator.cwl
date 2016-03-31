@@ -41,7 +41,7 @@ inputs:
 
 
 outputs:
-  - id: evaluator-output
+  - id: evaluatoroutput
     type: File
     outputBinding:
       # The output file is align_summary.txt
