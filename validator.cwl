@@ -15,14 +15,6 @@ requirements:
 
 # The position determines where the commands are placed in command line
 inputs:
-
-  - id: truthfile
-    type: File
-    description: | 
-      bedpe-refer to SMC-RNA
-    inputBinding:
-      prefix: --truthfile
-      position: 1
   
   - id: inputbedpe
     type: File
@@ -44,6 +36,5 @@ outputs:
     outputBinding:
       glob: [$(inputs.outputbedpe), error.log]
 
-
-baseCommand: [evaluation.py,evaluate]
+baseCommand: [evaluation.py,validate]
 
