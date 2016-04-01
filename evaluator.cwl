@@ -32,7 +32,7 @@ inputs:
       prefix: --inputbedpe
       position: 1
 
-  - id: outputbedpe
+  - id: output
     type: string
     inputBinding:
       prefix: --outputbedpe
@@ -42,8 +42,7 @@ outputs:
   - id: evaluatoroutput
     type: File
     outputBinding:
-      glob: [$(inputs.outputbedpe), error.log]
-
+      glob: [$(inputs.output), error.log]
 
 baseCommand: [evaluation.py,evaluate]
 

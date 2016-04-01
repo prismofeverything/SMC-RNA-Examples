@@ -31,7 +31,7 @@ inputs:
       position: 1
 
 outputs:
-  - id: evaluatoroutput
+  - id: validatoroutput
     type: File
     outputBinding:
       glob: [$(inputs.outputbedpe), error.log]

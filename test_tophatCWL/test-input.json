@@ -1,5 +1,5 @@
 { 
-     "bowtie_index": {
+    "bowtie_index": {
         "class": "File",
         "path": "test_data/test_ref.1.bt2"
     },
