@@ -33,6 +33,7 @@ inputs:
 
   - id: rulefile
     type: File
+    
 outputs:
 
   - id: output
