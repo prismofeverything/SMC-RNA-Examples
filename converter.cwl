@@ -13,7 +13,7 @@ description: |
 requirements:
   - class: InlineJavascriptRequirement
   - class: DockerRequirement
-    dockerPull: thomasvyu/converter
+    dockerPull: dreamchallenge/smcrna-functions
 
 # The position determines where the commands are placed in command line
 inputs:

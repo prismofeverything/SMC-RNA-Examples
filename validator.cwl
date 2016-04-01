@@ -11,7 +11,7 @@ description: |
 requirements:
   - class: InlineJavascriptRequirement
   - class: DockerRequirement
-    dockerPull: thomasvyu/smcrna-evaluation
+    dockerPull: dreamchallenge/smcrna-functions
 
 # The position determines where the commands are placed in command line
 inputs:
