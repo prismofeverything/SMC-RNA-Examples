@@ -12,6 +12,7 @@ WORKDIR /opt
 RUN git clone https://github.com/Sage-Bionetworks/SMC-RNA-Challenge.git && \
 	cd SMC-RNA-Challenge && \
 	cp evaluation.py /usr/local/bin/ && \
+	cp convert_tophapt_to_bedpe.py /usr/local/bin/ && \
 	mkdir build && \
 	cd build && \
 	cmake ../FusionEvaluator_0_1_2/ -DCMAKE_BUILD_TYPE=release && \
