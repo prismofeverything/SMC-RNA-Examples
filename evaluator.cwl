@@ -32,6 +32,14 @@ inputs:
       prefix: --inputbedpe
       position: 1
 
+  - id: rulefile
+    type: File
+    description: |
+      rule file- refer to SMC-RNA
+    inputBinding:
+      prefix: --rulefile
+      position: 1
+
   - id: output
     type: string
     inputBinding:

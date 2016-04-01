@@ -10,5 +10,11 @@
     "fastq2": {
         "class": "File",
         "path": "Tumor_fastq2",
+    },
+    "outputbedpe": "valid.bedpe",
+    "truthfile": {
+        "class": "File",
+        "path": "../SMC-RNA-Challenge/example/truth.bedpe",
     },  
+    "evaloutput": "result.out"
 }

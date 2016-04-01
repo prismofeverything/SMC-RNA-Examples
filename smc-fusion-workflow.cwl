@@ -10,6 +10,7 @@ description:
   creates custom genome from reference genome and two phased VCF files SNPs and Indels
 
 inputs: 
+    #tophat
   - id: bowtie_index
     type: File
 
@@ -18,12 +19,25 @@ inputs:
 
   - id: fastq2
     type: File
+    
+    #validator
+  - id: outputbedpe
+    type: string
+    
+    #evaluator
+  - id: truthfile
+    type: File
 
+  - id: evaloutput
+    type: string
+
+  - id: rulefile
+    type: File
 outputs:
 
   - id: output
     type: File
-    source: "#converttobedpe/fusionout"
+    source: "#evaluator/evaluatoroutput"
 
 steps:
 
@@ -55,3 +69,21 @@ steps:
     - {id: output, default: "output.txt"}
     outputs:
     - {id: fusionout}
+
+  - id: validator
+    run: validator.cwl
+    inputs:
+    - {id: inputbedpe, source: "#converttobedpe/fusionout"}
+    - {id: outputbedpe, source: "#outputbedpe"}
+    outputs:
+    - {id: validatoroutput}
+
+  - id: evaluator
+    run: evaluator.cwl
+    inputs:
+    - {id: inputbedpe, source: "#validator/validatoroutput"}
+    - {id: truthfile, source: "#truthfile"}
+    - {id: rulefile, source: "#rulefile"}
+    - {id: output, source: "#evaloutput"}
+    outputs:
+    - {id: evaluatoroutput}
