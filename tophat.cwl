@@ -120,8 +120,6 @@ inputs:
 
   - id: bowtie_index
     type: File
-      #type: array
-      #items: File
     secondaryFiles:
       - ^^.2.ebwt
       - ^^.3.ebwt
