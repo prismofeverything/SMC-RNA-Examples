@@ -74,10 +74,19 @@ steps:
     outputs:
     - {id: fusionout}
 
+  - id: filterbedpe
+    run: grep.cwl
+    inputs:
+    - {id: input, source: "#converttobedpe/fusionout"}
+    - {id: v, default: true}
+    - {id: pattern, default: chrMT}
+    outputs:
+    - {id: output}
+
   - id: validator
     run: validator.cwl
     inputs:
-    - {id: inputbedpe, source: "#converttobedpe/fusionout"}
+    - {id: inputbedpe, source: "#filterbedpe/output"}
     - {id: outputbedpe, source: "#outputbedpe"}
     outputs:
     - {id: validatoroutput}
