@@ -12,5 +12,9 @@
     "rulefile": {
         "class": "File",
         "path": "../SMC-RNA-Challenge/examples/rulefile.txt",
+    },
+    "geneAnnotationFile": {
+        "class": "File",
+        "path": "../SMC-RNA-Challenge/examples/ensembl.hg19.txt",
     }
 }

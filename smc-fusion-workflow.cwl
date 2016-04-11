@@ -79,7 +79,7 @@ steps:
     inputs:
     - {id: input, source: "#converttobedpe/fusionout"}
     - {id: v, default: true}
-    - {id: pattern, default: chrMT}
+    - {id: pattern, default: MT}
     outputs:
     - {id: output}
 

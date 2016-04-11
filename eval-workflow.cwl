@@ -36,10 +36,19 @@ outputs:
 
 steps:
 
+  - id: filterbedpe
+    run: grep.cwl
+    inputs:
+    - {id: input, source: "#inputbedpe"}
+    - {id: v, default: true}
+    - {id: pattern, default: MT}
+    outputs:
+    - {id: output}
+
   - id: validator
     run: validator.cwl
     inputs:
-    - {id: inputbedpe, source: "#inputbedpe"}
+    - {id: inputbedpe, source: "#filterbedpe/output"}
     - {id: outputbedpe, source: "#outputbedpe"}
     outputs:
     - {id: validatoroutput}
