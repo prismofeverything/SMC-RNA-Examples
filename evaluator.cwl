@@ -40,6 +40,14 @@ inputs:
       prefix: --rulefile
       position: 1
 
+  - id: geneAnnotationFile
+    type: File
+    description: |
+      Gene annotation file- refer to SMC-RNA
+    inputBinding:
+      prefix: --gtf
+      position: 1
+
   - id: output
     type: string
     inputBinding:

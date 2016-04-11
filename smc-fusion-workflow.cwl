@@ -33,6 +33,9 @@ inputs:
 
   - id: rulefile
     type: File
+
+  - id: geneAnnotationFile
+    type: File
     
 outputs:
 
@@ -86,5 +89,7 @@ steps:
     - {id: truthfile, source: "#truthfile"}
     - {id: rulefile, source: "#rulefile"}
     - {id: output, source: "#evaloutput"}
+    - {id: geneAnnotationFile, source: "#geneAnnotationFile"}
+
     outputs:
     - {id: evaluatoroutput}
