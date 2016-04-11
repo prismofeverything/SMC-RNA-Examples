@@ -33,6 +33,9 @@ inputs:
 
   - id: rulefile
     type: File
+
+  - id: geneAnnotationFile
+    type: File
     
 outputs:
 
@@ -71,10 +74,19 @@ steps:
     outputs:
     - {id: fusionout}
 
+  - id: filterbedpe
+    run: grep.cwl
+    inputs:
+    - {id: input, source: "#converttobedpe/fusionout"}
+    - {id: v, default: true}
+    - {id: pattern, default: MT}
+    outputs:
+    - {id: output}
+
   - id: validator
     run: validator.cwl
     inputs:
-    - {id: inputbedpe, source: "#converttobedpe/fusionout"}
+    - {id: inputbedpe, source: "#filterbedpe/output"}
     - {id: outputbedpe, source: "#outputbedpe"}
     outputs:
     - {id: validatoroutput}
@@ -86,5 +98,7 @@ steps:
     - {id: truthfile, source: "#truthfile"}
     - {id: rulefile, source: "#rulefile"}
     - {id: output, source: "#evaloutput"}
+    - {id: geneAnnotationFile, source: "#geneAnnotationFile"}
+
     outputs:
     - {id: evaluatoroutput}

@@ -24,7 +24,10 @@ inputs:
 
   - id: rulefile
     type: File
-    
+  
+  - id: geneAnnotationFile
+    type: File
+
 outputs:
 
   - id: output
@@ -33,10 +36,19 @@ outputs:
 
 steps:
 
+  - id: filterbedpe
+    run: grep.cwl
+    inputs:
+    - {id: input, source: "#inputbedpe"}
+    - {id: v, default: true}
+    - {id: pattern, default: MT}
+    outputs:
+    - {id: output}
+
   - id: validator
     run: validator.cwl
     inputs:
-    - {id: inputbedpe, source: "#inputbedpe"}
+    - {id: inputbedpe, source: "#filterbedpe/output"}
     - {id: outputbedpe, source: "#outputbedpe"}
     outputs:
     - {id: validatoroutput}
@@ -48,5 +60,6 @@ steps:
     - {id: truthfile, source: "#truthfile"}
     - {id: rulefile, source: "#rulefile"}
     - {id: output, source: "#evaloutput"}
+    - {id: geneAnnotationFile, source: "#geneAnnotationFile"}
     outputs:
     - {id: evaluatoroutput}
