@@ -10,7 +10,7 @@ RUN apt-get -y update && \
 	apt-get install -y libssl-dev && \
 	apt-get install -y samtools
 	
-RUN pip install pysam
+RUN pip install pysam && \
 	pip install biopython
 
 WORKDIR /opt
