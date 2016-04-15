@@ -14,7 +14,7 @@ inputs:
     #tophat
   - id: index
     type: File
-    synData: syn1234
+    synData: syn5909383
 
   - id: TUMOR_FASTQ_1
     type: File
