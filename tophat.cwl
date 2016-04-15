@@ -4,10 +4,7 @@ cwlVersion: "cwl:draft-3"
 
 class: CommandLineTool
 
-description: |
-  tophat2.cwl is developed for SMC-RNA Challenge
-
-  Original tool usage: #update tool usage
+description: "This tool is developed for SMC-RNA Challenge for detecting gene fusions (tophat fusion)"
 
 #Import other CWL files
 requirements:
@@ -137,5 +134,5 @@ outputs:
 
 baseCommand: [tophat]
 arguments:
-  - valueFrom: $(inputs.bowtie_index.path.slice(0,-7))
+  - valueFrom: $(inputs.bowtie_index.path.split("/").slice(0,-1).join("/"))
     position: 3
