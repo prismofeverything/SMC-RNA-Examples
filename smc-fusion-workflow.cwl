@@ -10,31 +10,33 @@ description:
   creates custom genome from reference genome and two phased VCF files SNPs and Indels
 
 inputs: 
+
     #tophat
-  - id: bowtie_index
+  - id: index
+    type: File
+    synData: syn1234
+
+  - id: TUMOR_FASTQ_1
     type: File
 
-  - id: fastq1
-    type: File
-
-  - id: fastq2
+  - id: TUMOR_FASTQ_2
     type: File
     
     #validator
-  - id: outputbedpe
+  - id: validatorOutput
     type: string
     
     #evaluator
-  - id: truthfile
+  - id: TRUTH
     type: File
 
-  - id: evaloutput
+  - id: evaluatorOutput
     type: string
 
-  - id: rulefile
+  - id: RULE
     type: File
 
-  - id: geneAnnotationFile
+  - id: GENE_ANNOTATIONS
     type: File
     
 outputs:
@@ -54,15 +56,15 @@ steps:
     - {id: keep-fasta-order, default: true}
     - {id: bowtie1, default: true}
     - {id: mate-std-dev, default: 80}
-    - {id: o, default: testwork}
+    - {id: o, default: tophat_out}
     - {id: max-intron-length, default: 100000}
     - {id: fusion-min-dist, default: 100000}
     - {id: fusion-anchor-length, default: 13}
     - {id: fusion-ignore-chromosomes, default: chrM}
     #pass in the first bowtie 2 reference
-    - {id: bowtie_index, source: "#bowtie_index"}
-    - {id: fastq1, source: "#fastq1"}
-    - {id: fastq2, source: "#fastq2"}
+    - {id: bowtie_index, source: "#index"}
+    - {id: fastq1, source: "#TUMOR_FASTQ_1"}
+    - {id: fastq2, source: "#TUMOR_FASTQ_2"}
     outputs:
     - {id: tophatOut}
 
@@ -87,7 +89,7 @@ steps:
     run: validator.cwl
     inputs:
     - {id: inputbedpe, source: "#filterbedpe/output"}
-    - {id: outputbedpe, source: "#outputbedpe"}
+    - {id: outputbedpe, source: "#validatorOutput"}
     outputs:
     - {id: validatoroutput}
 
@@ -95,10 +97,10 @@ steps:
     run: evaluator.cwl
     inputs:
     - {id: inputbedpe, source: "#validator/validatoroutput"}
-    - {id: truthfile, source: "#truthfile"}
-    - {id: rulefile, source: "#rulefile"}
-    - {id: output, source: "#evaloutput"}
-    - {id: geneAnnotationFile, source: "#geneAnnotationFile"}
+    - {id: truthfile, source: "#TRUTH"}
+    - {id: rulefile, source: "#RULE"}
+    - {id: output, source: "#evaluatorOutput"}
+    - {id: geneAnnotationFile, source: "#GENE_ANNOTATIONS"}
 
     outputs:
     - {id: evaluatoroutput}
