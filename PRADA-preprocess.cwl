@@ -52,7 +52,7 @@ inputs:
       output dir. Default is the directory where the input files are.
     inputBinding:
       position: 2
-      prefix: --outdir
+      prefix: -outdir
 
   - id: submit
     type: ["null",string]
@@ -60,7 +60,7 @@ inputs:
       If submit the job to HPC, default is no.
     inputBinding:
       position: 2
-      prefix: --submit
+      prefix: -submit
 
   - id: intermediate
     type: ["null",string]
@@ -69,7 +69,7 @@ inputs:
     inputBinding:
       position: 2
       prefix: -intermediate
-      
+
 outputs:
   - id: output
     type: File
