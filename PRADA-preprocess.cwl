@@ -62,6 +62,14 @@ inputs:
       position: 2
       prefix: --submit
 
+  - id: intermediate
+    type: ["null",string]
+    description: | 
+      values:yes/no; if intermediate files should be kept. Default is not.
+    inputBinding:
+      position: 2
+      prefix: -intermediate
+      
 outputs:
   - id: output
     type: File
