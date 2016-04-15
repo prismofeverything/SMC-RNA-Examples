@@ -134,5 +134,5 @@ outputs:
 
 baseCommand: [tophat]
 arguments:
-  - valueFrom: $(inputs.bowtie_index.path.split("/").slice(0,-1).join("/"))
+  - valueFrom: $(inputs.bowtie_index.path.slice(0,-7))
     position: 3
