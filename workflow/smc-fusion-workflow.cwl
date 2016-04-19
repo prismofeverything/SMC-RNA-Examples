@@ -48,7 +48,7 @@ outputs:
 steps:
 
   - id: tophat
-    run: tophat/cwl/tophat.cwl
+    run: ../tophat/cwl/tophat.cwl
     inputs:
     - {id: p, default: 5}
     - {id: r, default: 0}
@@ -69,7 +69,7 @@ steps:
     - {id: tophatOut}
 
   - id: converttobedpe
-    run: tophat/cwl/converter.cwl
+    run: ../tophat/cwl/converter.cwl
     inputs:
     - {id: input, source: "#tophat/tophatOut"}
     - {id: output, default: "output.txt"}
@@ -77,7 +77,7 @@ steps:
     - {id: fusionout}
 
   - id: filterbedpe
-    run: workflow/grep.cwl
+    run: grep.cwl
     inputs:
     - {id: input, source: "#converttobedpe/fusionout"}
     - {id: v, default: true}
@@ -86,7 +86,7 @@ steps:
     - {id: output}
 
   - id: validator
-    run: workflow/validator.cwl
+    run: validator.cwl
     inputs:
     - {id: inputbedpe, source: "#filterbedpe/output"}
     - {id: outputbedpe, source: "#validatorOutput"}
@@ -94,7 +94,7 @@ steps:
     - {id: validatoroutput}
 
   - id: evaluator
-    run: workflow/evaluator.cwl
+    run: evaluator.cwl
     inputs:
     - {id: inputbedpe, source: "#validator/validatoroutput"}
     - {id: truthfile, source: "#TRUTH"}
