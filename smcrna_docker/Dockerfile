@@ -1,4 +1,5 @@
-FROM ubuntu
+FROM ubuntu:14.04
+
 #Install Essentials
 RUN apt-get -y update
 RUN apt-get install -y git build-essential cmake gcc python
