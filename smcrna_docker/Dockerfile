@@ -1,13 +1,9 @@
-FROM ubuntu:14.04
+FROM ubuntu
 #Install Essentials
-RUN apt-get -y update && \
-	apt-get install -y git && \
-	apt-get install -y build-essential && \
-	apt-get install -y cmake && \
-	apt-get install -y gcc && \
-	apt-get install -y python
+RUN apt-get -y update
+RUN apt-get install -y git build-essential cmake gcc python
 
-#Install Evaluator
+#Install converter, evaluator, validator
 WORKDIR /opt
 RUN git clone https://github.com/Sage-Bionetworks/SMC-RNA-Challenge.git && \
 	cd SMC-RNA-Challenge && \
