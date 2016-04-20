@@ -13,7 +13,7 @@ description: |
 requirements:
   - class: InlineJavascriptRequirement
   - class: DockerRequirement
-    dockerPull: dreamchallenge/smcrna-functions
+    dockerPull: dreamchallenge/tophat
 
 # The position determines where the commands are placed in command line
 inputs:

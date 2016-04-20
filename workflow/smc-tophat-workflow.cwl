@@ -22,25 +22,11 @@ inputs:
   - id: TUMOR_FASTQ_2
     type: File
     
-    #validator
-  - id: validatorOutput
-    type: string
-    
-    #evaluator
-  - id: TRUTH
-    type: File
-
-  - id: evaluatorOutput
-    type: string
-
-  - id: GENE_ANNOTATIONS
-    type: File
-    
 outputs:
 
   - id: output
     type: File
-    source: "#evaluator/evaluatoroutput"
+    source: "#filterbedpe/output"
 
 steps:
 
@@ -74,31 +60,10 @@ steps:
     - {id: fusionout}
 
   - id: filterbedpe
-    run: grep.cwl
+    run: ../tophat/cwl/grep.cwl
     inputs:
     - {id: input, source: "#converttobedpe/fusionout"}
     - {id: v, default: true}
     - {id: pattern, default: MT}
     outputs:
     - {id: output}
-
-  - id: validator
-    run: validator.cwl
-    inputs:
-    - {id: inputbedpe, source: "#filterbedpe/output"}
-    - {id: outputbedpe, source: "#validatorOutput"}
-    outputs:
-    - {id: validatoroutput}
-    - {id: errorlog}
-
-  - id: evaluator
-    run: evaluator.cwl
-    inputs:
-    - {id: inputbedpe, source: "#validator/validatoroutput"}
-    - {id: error, source: "#validator/errorlog"}
-    - {id: truthfile, source: "#TRUTH"}
-    - {id: output, source: "#evaluatorOutput"}
-    - {id: geneAnnotationFile, source: "#GENE_ANNOTATIONS"}
-    outputs:
-    - {id: evaluatoroutput}
-    - {id: errorlog}
