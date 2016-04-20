@@ -59,6 +59,7 @@ steps:
     run: ../evaluator.cwl
     inputs:
     - {id: inputbedpe, source: "#validator/validatoroutput"}
+    - {id: error, source: "#validator/errorlog"}
     - {id: truthfile, source: "#truthfile"}
     - {id: output, source: "#evaloutput"}
     - {id: geneAnnotationFile, source: "#geneAnnotationFile"}
