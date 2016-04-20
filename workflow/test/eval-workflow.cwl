@@ -21,9 +21,6 @@ inputs:
 
   - id: evaloutput
     type: string
-
-  - id: rulefile
-    type: File
   
   - id: geneAnnotationFile
     type: File
@@ -58,7 +55,6 @@ steps:
     inputs:
     - {id: inputbedpe, source: "#validator/validatoroutput"}
     - {id: truthfile, source: "#truthfile"}
-    - {id: rulefile, source: "#rulefile"}
     - {id: output, source: "#evaloutput"}
     - {id: geneAnnotationFile, source: "#geneAnnotationFile"}
     outputs:
