@@ -12,7 +12,8 @@ requirements:
     dockerPull: dreamchallenge/star
 
 inputs:
-  #Give is a list of input files
+
+  #Give it a list of input files
   - id: index
     type:
       type: array
@@ -39,9 +40,9 @@ inputs:
 outputs:
   - id: output
     type: File
-      glob: $(inputs.output_dir+'/fusions.out')
+      glob: $(inputs.output_dir+'/star-fusion.fusion_candidates.final.abridged')
 
 baseCommand: [STAR-Fusion]
   - valueFrom: $(inputs.index.path[0].split("/").slice(0,-1).join("/"))
     prefix: --genome_lib_dir
-    position: 3
+    position: 0
