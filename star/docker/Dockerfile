@@ -17,4 +17,13 @@ RUN cpan install Set::IntervalTree
 
 RUN cpan install DB_File
 
+RUN apt-get install -y bowtie
+RUN wget http://research-pub.gene.com/gmap/src/gmap-gsnap-2016-04-04.tar.gz && \
+	tar -zvxf gmap-gsnap-2016-04-04.tar.gz && \
+	cd gmap-2016-04-04/ && \
+	./configure && \
+	make && \
+	make install
+
 ENV PATH /opt/STAR-Fusion/:/usr/local/bin/:/usr/bin:/bin
+

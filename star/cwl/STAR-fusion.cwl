@@ -40,9 +40,11 @@ inputs:
 outputs:
   - id: output
     type: File
+    outputBinding:
       glob: $(inputs.output_dir+'/star-fusion.fusion_candidates.final.abridged')
 
 baseCommand: [STAR-Fusion]
-  - valueFrom: $(inputs.index.path[0].split("/").slice(0,-1).join("/"))
+arguments:
+  - valueFrom: $(inputs.index[0].path.split("/").slice(0,-1).join("/"))
     prefix: --genome_lib_dir
     position: 0
