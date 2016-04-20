@@ -89,14 +89,17 @@ steps:
     - {id: outputbedpe, source: "#validatorOutput"}
     outputs:
     - {id: validatoroutput}
+    - {id: errorlog}
 
   - id: evaluator
     run: evaluator.cwl
     inputs:
     - {id: inputbedpe, source: "#validator/validatoroutput"}
+    - {id: error, source: "#validator/errorlog"}
     - {id: truthfile, source: "#TRUTH"}
     - {id: output, source: "#evaluatorOutput"}
     - {id: geneAnnotationFile, source: "#GENE_ANNOTATIONS"}
 
     outputs:
     - {id: evaluatoroutput}
+    - {id: errorlog}

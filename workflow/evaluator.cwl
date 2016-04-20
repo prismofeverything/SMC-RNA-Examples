@@ -25,11 +25,19 @@ inputs:
       position: 1
   
   - id: inputbedpe
-    type: File
+    type: ["null",File]
     description: | 
       bedpe-refer to SMC-RNA
     inputBinding:
       prefix: --inputbedpe
+      position: 1
+
+  - id: error
+    type: ["null",File]
+    description: | 
+      error.log to SMC-RNA
+    inputBinding:
+      prefix: --error
       position: 1
 
   - id: geneAnnotationFile
@@ -48,9 +56,14 @@ inputs:
 
 outputs:
   - id: evaluatoroutput
-    type: File
+    type: ["null",File]
     outputBinding:
-      glob: [$(inputs.output), error.log]
+      glob: $(inputs.output)
+
+  - id: errorlog
+    type: ["null",File]
+    outputBinding:
+      glob: error.log
 
 baseCommand: [evaluation.py,evaluate]
 

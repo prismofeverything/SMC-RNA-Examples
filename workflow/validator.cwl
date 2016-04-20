@@ -32,9 +32,14 @@ inputs:
 
 outputs:
   - id: validatoroutput
-    type: File
+    type: ["null",File]
     outputBinding:
-      glob: [$(inputs.outputbedpe), error.log]
+      glob: $(inputs.outputbedpe)
+
+  - id: errorlog
+    type: ["null",File]
+    outputBinding:
+      glob: error.log
 
 baseCommand: [evaluation.py,validate]
 
