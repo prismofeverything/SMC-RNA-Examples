@@ -1,0 +1,16 @@
+{ 
+    "index": [{"class": "File","path": "blast_pairs.outfmt6.gz"},
+              {"class": "File","path": "ref_annot.gtf"},
+              {"class": "File","path": "ref_cdna.fasta"},
+              {"class": "File","path": "ref_genome.fa"},
+              {"class": "File","path": "ref_genome.jf.min2.kmers"}],
+    "left_fq": {
+        "class": "File",
+        "path": "Tumor_fastq1",
+    },  
+    "right_fq": {
+        "class": "File",
+        "path": "Tumor_fastq2",
+    },
+    "output_dir": "starOutput",
+}
