@@ -17,10 +17,6 @@
         "path": "input/truth.bedpe",
     },  
     "evaluatorOutput": "result.out",
-    "RULE": {
-        "class": "File",
-        "path": "input/rulefile.txt",
-    },
     "GENE_ANNOTATIONS": {
         "class": "File",
         "path": "input/ensembl.hg19.txt",

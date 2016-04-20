@@ -33,9 +33,6 @@ inputs:
   - id: evaluatorOutput
     type: string
 
-  - id: RULE
-    type: File
-
   - id: GENE_ANNOTATIONS
     type: File
     
@@ -98,7 +95,6 @@ steps:
     inputs:
     - {id: inputbedpe, source: "#validator/validatoroutput"}
     - {id: truthfile, source: "#TRUTH"}
-    - {id: rulefile, source: "#RULE"}
     - {id: output, source: "#evaluatorOutput"}
     - {id: geneAnnotationFile, source: "#GENE_ANNOTATIONS"}
 
