@@ -99,7 +99,6 @@ steps:
     - {id: truthfile, source: "#TRUTH"}
     - {id: output, source: "#evaluatorOutput"}
     - {id: geneAnnotationFile, source: "#GENE_ANNOTATIONS"}
-
     outputs:
     - {id: evaluatoroutput}
     - {id: errorlog}
