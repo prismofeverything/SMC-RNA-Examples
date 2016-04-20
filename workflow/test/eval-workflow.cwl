@@ -28,13 +28,17 @@ inputs:
 outputs:
 
   - id: output
-    type: File
+    type: ["null",File]
     source: "#evaluator/evaluatoroutput"
+
+  - id: error
+    type: ["null",File]
+    source: "#evaluator/errorlog"
 
 steps:
 
   - id: filterbedpe
-    run: grep.cwl
+    run: ../grep.cwl
     inputs:
     - {id: input, source: "#inputbedpe"}
     - {id: v, default: true}
@@ -43,15 +47,16 @@ steps:
     - {id: output}
 
   - id: validator
-    run: validator.cwl
+    run: ../validator.cwl
     inputs:
     - {id: inputbedpe, source: "#filterbedpe/output"}
     - {id: outputbedpe, source: "#outputbedpe"}
     outputs:
     - {id: validatoroutput}
+    - {id: errorlog}
 
   - id: evaluator
-    run: evaluator.cwl
+    run: ../evaluator.cwl
     inputs:
     - {id: inputbedpe, source: "#validator/validatoroutput"}
     - {id: truthfile, source: "#truthfile"}
@@ -59,3 +64,4 @@ steps:
     - {id: geneAnnotationFile, source: "#geneAnnotationFile"}
     outputs:
     - {id: evaluatoroutput}
+    - {id: errorlog}
