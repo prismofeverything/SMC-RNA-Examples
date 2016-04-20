@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 
 RUN apt-get -y update
-RUN apt-get install -y wget zip bzip2
+RUN apt-get install -y wget zip bzip2 python git
 RUN apt-get install -y tophat 
 RUN apt-get install -y bowtie 
 RUN apt-get install -y samtools
