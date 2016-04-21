@@ -11,7 +11,6 @@ description:
 
 inputs: 
 
-    #tophat
   - id: index
     type: File
     synData: syn5909383
