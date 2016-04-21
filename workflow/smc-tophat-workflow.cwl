@@ -24,7 +24,7 @@ inputs:
     
 outputs:
 
-  - id: output
+  - id: FUSION_OUTPUT
     type: File
     source: "#filterbedpe/output"
 
