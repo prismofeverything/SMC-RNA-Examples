@@ -19,17 +19,11 @@ inputs:
       type: array
       items: File
 
-  - id: left_fq
+  - id: J
     type: File
     inputBinding:
+      prefix: -J
       position: 1
-      prefix: --left_fq
-
-  - id: right_fq
-    type: File
-    inputBinding:
-      position: 1
-      prefix: --right_fq
 
   - id: output_dir
     type: string
