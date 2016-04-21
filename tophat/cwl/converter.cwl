@@ -7,15 +7,11 @@ class: CommandLineTool
 description: |
   converter.cwl is developed for SMC-RNA Challenge
 
-  Original tool usage: #update tool usage
-
-#Import other CWL files
 requirements:
   - class: InlineJavascriptRequirement
   - class: DockerRequirement
     dockerPull: dreamchallenge/tophat
 
-# The position determines where the commands are placed in command line
 inputs:
 
   - id: input
@@ -30,8 +26,6 @@ outputs:
   - id: fusionout
     type: File
     outputBinding:
-      # The output file is align_summary.txt
-      # Make sure the output files match
       glob: $(inputs.output)
 
 stdout: $(inputs.output)
