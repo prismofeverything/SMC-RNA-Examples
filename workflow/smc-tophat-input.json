@@ -10,15 +10,5 @@
     "TUMOR_FASTQ_2": {
         "class": "File",
         "path": "Tumor_fastq2",
-    },
-    "validatorOutput": "valid.bedpe",
-    "TRUTH": {
-        "class": "File",
-        "path": "input/truth.bedpe",
-    },  
-    "evaluatorOutput": "result.out",
-    "GENE_ANNOTATIONS": {
-        "class": "File",
-        "path": "input/ensembl.hg19.txt",
     }
 }
