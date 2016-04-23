@@ -47,10 +47,16 @@ steps:
     - {id: alignSJDBoverhangMin, default: 10}
     - {id: alignMatesGapMax, default: 200000}
     - {id: alignIntronMax, default: 200000}
-    - {id: chimSegmentReadGapMax, default: parameter 3}
-    - {id: alignSJstitchMismatchNmax, default: 5 -1 5 5}
-    - {id: limitBAMsortRAM, default: 31532137230}
-    - {id: outSAMtype, default: SortedByCoordinate}
+    - {id: chimSegmentReadGapMax, default: parameter}
+    - {id: chim2, default: 3}
+    - {id: alignSJstitchMismatchNmax, default: 5}
+    - {id: align2, default: -1}
+    - {id: align3, default: 5}
+    - {id: align4, default: 5}
+    - {id: runThreadN, default: 16}
+    - {id: limitBAMsortRAM, default: "31532137230"}
+    - {id: outSAMtype, default: BAM}
+    - {id: outSAMsecond, default: SortedByCoordinate}
     - {id: index, source: "#starindex"}
     - {id: fastq1, source: "#TUMOR_FASTQ_1"}
     - {id: fastq2, source: "#TUMOR_FASTQ_2"}

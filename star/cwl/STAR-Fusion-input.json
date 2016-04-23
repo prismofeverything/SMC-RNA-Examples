@@ -1,16 +1,12 @@
 { 
-    "index": [{"class": "File","path": "blast_pairs.outfmt6.gz"},
-              {"class": "File","path": "ref_annot.gtf"},
-              {"class": "File","path": "ref_cdna.fasta"},
-              {"class": "File","path": "ref_genome.fa"},
-              {"class": "File","path": "ref_genome.jf.min2.kmers"}],
-    "left_fq": {
+    "index": [{"class": "File","path": "star_fusion_index/blast_pairs.outfmt6.gz"},
+              {"class": "File","path": "star_fusion_index/ref_annot.gtf"},
+              {"class": "File","path": "star_fusion_index/blast_pairs.idx"},
+              {"class": "File","path": "star_fusion_index/ref_genome.fa"}],
+    "J": {
         "class": "File",
-        "path": "Tumor_fastq1",
-    },  
-    "right_fq": {
-        "class": "File",
-        "path": "Tumor_fastq2",
+        "path": "Chimeric.out.junction",
     },
     "output_dir": "starOutput",
+    "threads": 16
 }

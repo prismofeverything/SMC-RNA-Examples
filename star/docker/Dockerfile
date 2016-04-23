@@ -25,5 +25,7 @@ RUN wget http://research-pub.gene.com/gmap/src/gmap-gsnap-2016-04-04.tar.gz && \
 	make && \
 	make install
 
+RUN cpan install URI::Escape 
+
 ENV PATH /opt/STAR-Fusion/:/usr/local/bin/:/usr/bin:/bin
 
