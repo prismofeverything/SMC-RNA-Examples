@@ -32,7 +32,7 @@ inputs:
       position: 2
 
   - id: threads
-    type: int
+    type: ["null",int]
     inputBinding:
       prefix: --CPU
       position: 2

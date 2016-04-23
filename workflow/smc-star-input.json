@@ -14,12 +14,10 @@
                   {"class": "File","path": "star_index/sjdbList.fromGTF.out.tab"},
                   {"class": "File","path": "star_index/sjdbList.out.tab"},
                   {"class": "File","path": "star_index/transcriptInfo.tab"}],
-    },
     "starfusionindex": [{"class": "File","path": "star_fusion_index/blast_pairs.outfmt6.gz"},
                         {"class": "File","path": "star_fusion_index/ref_annot.gtf"},
                         {"class": "File","path": "star_fusion_index/blast_pairs.idx"},
-                        {"class": "File","path": "star_fusion_index/ref_genome.fa"}]
-    }
+                        {"class": "File","path": "star_fusion_index/ref_genome.fa"}],
     "TUMOR_FASTQ_1": {
         "class": "File",
         "path": "Tumor_fastq1",

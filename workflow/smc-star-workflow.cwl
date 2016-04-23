@@ -69,5 +69,6 @@ steps:
     - {id: index, source: "#starfusionindex"}
     - {id: J, source: "#star/output"}
     - {id: output_dir, default: starOut}
+    - {id: threads, default: 16}
     outputs:
     - {id: output}
