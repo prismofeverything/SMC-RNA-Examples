@@ -1,7 +1,7 @@
 { 
     "index": {
         "class": "File",
-        "path": "bowtie_index/genome.1.ebwt"
+        "path": "bowtie_index.tar"
     },
     "TUMOR_FASTQ_1": {
         "class": "File",
