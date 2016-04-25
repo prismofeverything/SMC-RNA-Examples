@@ -21,5 +21,22 @@
     "fastq2": {
         "class": "File",
         "path": "sim1a_30m_2.fq",
-    }
+    },
+    "twopassMode": "Basic",
+    "outReadsUnmapped": "None",
+    "chimSegmentMin": 12,
+    "chimJunctionOverhangMin": 12,
+    "alignSJDBoverhangMin": 10,
+    "alignMatesGapMax": 200000,
+    "alignIntronMax": 200000,
+    "chimSegmentReadGapMax": "parameter",
+    "chim2": 3,
+    "alignSJstitchMismatchNmax": 5,
+    "align2": -1,
+    "align3": 5,
+    "align4": 5,
+    "runThreadN": 16,
+    "limitBAMsortRAM": "31532137230",
+    "outSAMtype": "BAM",
+    "outSAMsecond": "SortedByCoordinate"
 }
