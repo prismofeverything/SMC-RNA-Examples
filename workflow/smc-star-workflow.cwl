@@ -65,7 +65,7 @@ steps:
     - {id: output}
 
   - id: starfusion
-    run: ../star/cwl/STAR-Fusion.cwl
+    run: ../star/cwl/STAR-fusion.cwl
     inputs:
     - {id: index, source: "#tar/output"}
     - {id: J, source: "#star/output"}
