@@ -11,13 +11,7 @@ description:
 
 inputs: 
 
-  - id: starindex
-    type:
-      type: array
-      items: File
-    synData: syn5909383
-
-  - id: starfusionindex
+  - id: index
     type:
       type: array
       items: File
@@ -36,6 +30,13 @@ outputs:
     source: "#starfusion/output"
 
 steps:
+
+  - id: tar
+    run: ../star/cwl/tar.cwl
+    inputs:
+    - {id: index, source: "#index"}
+    outputs:
+    - {id: output}
 
   - id: star
     run: ../star/cwl/STAR.cwl
@@ -57,7 +58,7 @@ steps:
     - {id: limitBAMsortRAM, default: "31532137230"}
     - {id: outSAMtype, default: BAM}
     - {id: outSAMsecond, default: SortedByCoordinate}
-    - {id: index, source: "#starindex"}
+    - {id: index, source: "#tar/output"}
     - {id: fastq1, source: "#TUMOR_FASTQ_1"}
     - {id: fastq2, source: "#TUMOR_FASTQ_2"}
     outputs:
@@ -66,7 +67,7 @@ steps:
   - id: starfusion
     run: ../star/cwl/STAR-Fusion.cwl
     inputs:
-    - {id: index, source: "#starfusionindex"}
+    - {id: index, source: "#tar/output"}
     - {id: J, source: "#star/output"}
     - {id: output_dir, default: starOut}
     - {id: threads, default: 16}
