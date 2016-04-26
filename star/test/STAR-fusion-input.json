@@ -1,0 +1,12 @@
+{ 
+    "index": [{"class": "File","path": "star_fusion_index/blast_pairs.outfmt6.gz"},
+              {"class": "File","path": "star_fusion_index/ref_annot.gtf"},
+              {"class": "File","path": "star_fusion_index/blast_pairs.idx"},
+              {"class": "File","path": "star_fusion_index/ref_genome.fa"}],
+    "J": {
+        "class": "File",
+        "path": "Chimeric.out.junction",
+    },
+    "output_dir": "starOutput",
+    "threads": 16
+}

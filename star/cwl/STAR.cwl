@@ -23,7 +23,7 @@ inputs:
     type: File
     inputBinding:
       position: 1
-      prefix: -readFilesIn
+      prefix: --readFilesIn
 
   - id: fastq2
     type: File
@@ -40,73 +40,98 @@ inputs:
     type: ["null",string]
     inputBinding:
       prefix: --outReadsUnmapped
-      position: 3
+      position: 4
 
   - id: chimSegmentMin
     type: ["null",int]
     inputBinding:
       prefix: --chimSegmentMin
-      position: 3
+      position: 5
 
   - id: chimJunctionOverhangMin
     type: ["null",int]
     inputBinding:
       prefix: --chimJunctionOverhangMin
-      position: 3
+      position: 6
 
   - id: alignSJDBoverhangMin
     type: ["null",int]
     inputBinding:
       prefix: --alignSJDBoverhangMin
-      position: 3
+      position: 7
 
   - id: alignMatesGapMax
     type: ["null",int]
     inputBinding:
       prefix: --alignMatesGapMax
-      position: 3
+      position: 8
 
   - id: alignIntronMax
     type: ["null",int]
     inputBinding:
       prefix: --alignIntronMax
-      position: 3
+      position: 9
       
   - id: chimSegmentReadGapMax
-    type: ["null,string]
-    inputBinding:
-      prefix: --chimSegmentReadGapMax
-      position: 3
-      
-  - id: alignSJstitchMismatchNmax
     type: ["null",string]
     inputBinding:
+      prefix: --chimSegmentReadGapMax
+      position: 10
+    
+  - id: chim2
+    type: ["null",int]
+    inputBinding:
+      position: 11
+
+  - id: alignSJstitchMismatchNmax
+    type: ["null",int]
+    inputBinding:
       prefix: --alignSJstitchMismatchNmax
-      position: 3
+      position: 12
       
+  - id: align2
+    type: ["null",int]
+    inputBinding:
+      position: 13
+      
+  - id: align3
+    type: ["null",int]
+    inputBinding:
+      position: 14
+      
+  - id: align4
+    type: ["null",int]
+    inputBinding:
+      position: 15
+
   - id: runThreadN
     type: ["null",int]
     inputBinding:
-      prefix: --outReadsUnmapped
-      position: 3
+      prefix: --runThreadN
+      position: 16
       
   - id: limitBAMsortRAM
-    type: ["null",int]
+    type: ["null",string]
     inputBinding:
       prefix: --limitBAMsortRAM
-      position: 3
+      position: 17
       
   - id: outSAMtype
     type: ["null",string]
     inputBinding:
       prefix: --outSAMtype
-      position: 3
-      
+      position: 18
+
+  - id: outSAMsecond
+    type: ["null",string]
+    inputBinding:
+      position: 19
+
   - id: readFilesCommand
     type: ["null",string]
     inputBinding:
       prefix: --readFilesCommand
-      position: 3
+      position: 20
 
 
 outputs:

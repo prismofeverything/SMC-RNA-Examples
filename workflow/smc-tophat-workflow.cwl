@@ -29,6 +29,13 @@ outputs:
 
 steps:
 
+  - id: tar
+    run: ../tophat/cwl/tar.cwl
+    inputs:
+    - {id: index, source: "#index"}  
+    outputs:
+    - {id: output}
+
   - id: tophat
     run: ../tophat/cwl/tophat.cwl
     inputs:
@@ -43,8 +50,7 @@ steps:
     - {id: fusion-min-dist, default: 100000}
     - {id: fusion-anchor-length, default: 13}
     - {id: fusion-ignore-chromosomes, default: chrM}
-    #pass in the first bowtie 2 reference
-    - {id: bowtie_index, source: "#index"}
+    - {id: bowtie_index, source: "#tar/output"}
     - {id: fastq1, source: "#TUMOR_FASTQ_1"}
     - {id: fastq2, source: "#TUMOR_FASTQ_2"}
     outputs:

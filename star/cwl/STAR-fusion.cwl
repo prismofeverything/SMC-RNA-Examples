@@ -31,6 +31,12 @@ inputs:
       prefix: --output_dir
       position: 2
 
+  - id: threads
+    type: ["null",int]
+    inputBinding:
+      prefix: --CPU
+      position: 2
+
 outputs:
   - id: output
     type: File
