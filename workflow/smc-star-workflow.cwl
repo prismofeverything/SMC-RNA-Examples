@@ -12,9 +12,7 @@ description:
 inputs: 
 
   - id: index
-    type:
-      type: array
-      items: File
+    type: File
     synData: syn5909383
 
   - id: TUMOR_FASTQ_1
