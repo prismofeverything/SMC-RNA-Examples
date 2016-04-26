@@ -1,7 +1,7 @@
 { 
     "index": {
         "class": "File",
-        "path": "bowtie_index.tar"
+        "path": "tophat_bowtie1_index.tar.gz"
     },
     "TUMOR_FASTQ_1": {
         "class": "File",
