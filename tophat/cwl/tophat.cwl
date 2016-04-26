@@ -115,13 +115,9 @@ inputs:
       position: 1
 
   - id: bowtie_index
-    type: File
-    secondaryFiles:
-      - ^^.2.ebwt
-      - ^^.3.ebwt
-      - ^^.4.ebwt
-      - ^^.rev.1.ebwt
-      - ^^.rev.2.ebwt
+    type:
+      type: array
+      items: File
 
 outputs:
   - id: tophatOut
@@ -131,5 +127,5 @@ outputs:
 
 baseCommand: [tophat]
 arguments:
-  - valueFrom: $(inputs.bowtie_index.path.slice(0,-7))
+  - valueFrom: $(inputs.bowtie_index.path.slice(0,-11))
     position: 3
