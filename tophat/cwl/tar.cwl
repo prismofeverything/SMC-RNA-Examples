@@ -16,6 +16,6 @@ outputs:
       type: array
       items: File
     outputBinding:
-      glob: "*.ebwt"
+      glob: "tophat_bowtie1_index/*"
 
 baseCommand: [tar, xvzf]
