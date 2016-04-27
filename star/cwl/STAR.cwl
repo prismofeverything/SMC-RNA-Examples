@@ -10,6 +10,9 @@ requirements:
   - class: InlineJavascriptRequirement
   - class: DockerRequirement
     dockerPull: dreamchallenge/star
+  - class: ResourceRequirement
+    coresMin: 8
+    ramMin: 80000
 
 inputs:
   #Give it a list of input files

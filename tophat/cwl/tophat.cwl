@@ -11,6 +11,9 @@ requirements:
   - class: InlineJavascriptRequirement
   - class: DockerRequirement
     dockerPull: dreamchallenge/tophat
+  - class: ResourceRequirement
+    coresMin: 8
+    ramMin: 60000
 
 # The position determines where the commands are placed in command line
 inputs:
