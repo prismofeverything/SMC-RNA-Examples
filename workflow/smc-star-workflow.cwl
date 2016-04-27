@@ -13,7 +13,7 @@ inputs:
 
   - id: index
     type: File
-    synData: syn5909383
+    synData: syn5987269
 
   - id: TUMOR_FASTQ_1
     type: File
