@@ -136,6 +136,11 @@ inputs:
       prefix: --readFilesCommand
       position: 20
 
+  - id: quantMode
+    type: ["null",string]
+    inputBinding: 
+      prefix: --quantMode
+      position: 21
 
 outputs:
   - id: output
