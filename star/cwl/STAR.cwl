@@ -148,6 +148,11 @@ outputs:
     outputBinding:
       glob: 'Chimeric.out.junction'
 
+  - id: isoformoutput
+    type: ["null",File]
+    outputBinding:
+      glob: 'Aligned.toTranscriptome.out.bam'
+
 baseCommand: [STAR]
 arguments:
   - valueFrom: $(inputs.index[0].path.split("/").slice(0,-1).join("/"))
