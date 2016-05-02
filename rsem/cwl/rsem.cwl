@@ -55,7 +55,7 @@ outputs:
   - id: output
     type: File
     outputBinding:
-      glob: 'Chimeric.out.junction'
+      glob: $(inputs.output + '/sample_name.isoforms.results')
 
 baseCommand: [rsem-calculate-expression]
 arguments:
