@@ -13,7 +13,7 @@ inputs:
 
   - id: index
     type: File
-    synData: syn5987269
+    synData: syn6037390
 
   - id: TUMOR_FASTQ_1
     type: File
@@ -25,7 +25,7 @@ outputs:
 
   - id: FUSION_OUTPUT
     type: File
-    source: "#starfusion/output"
+    source: "#rsem/output"
 
 steps:
 
@@ -71,6 +71,5 @@ steps:
     - {id: output, default: rsemOut}
     - {id: threads, default: 16}
     - {id: pairedend, default: true}
-
     outputs:
     - {id: output}
