@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 #
-# Author: thomas.yu@sagebase.org
+# Authors: Thomas Yu, Ryan Spangler, Kyle Ellrott
 
 class: Workflow
 

@@ -1,10 +1,3 @@
-        rsem-calculate-expression --paired-end \
-                                  --bam \
-                                  -p 16 \
-                                  /data/mmliver_paired_end_quals.bam \
-                                  /ref/mouse_125 \
-                                  mmliver_paired_end_quals
-
 #!/usr/bin/env cwl-runner
 
 cwlVersion: "cwl:draft-3"
@@ -55,7 +48,12 @@ outputs:
   - id: output
     type: File
     outputBinding:
-      glob: $(inputs.output + '/sample_name.isoforms.results')
+      glob: $(inputs.output + '.isoforms.results')
+
+  - id: output
+    type: File
+    outputBinding:
+      glob: $(inputs.output + '.genes.results')
 
 baseCommand: [rsem-calculate-expression]
 arguments:
