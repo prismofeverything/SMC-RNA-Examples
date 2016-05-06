@@ -60,10 +60,6 @@ outputs:
     outputBinding:
       glob: $(inputs.output + '.isoforms.results')
 
-  - id: output
-    type: File
-    outputBinding:
-      glob: $(inputs.output + '.genes.results')
 
 baseCommand: [rsem-calculate-expression]
 arguments:

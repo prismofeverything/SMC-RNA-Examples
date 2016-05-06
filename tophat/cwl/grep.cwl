@@ -4,7 +4,7 @@ cwlVersion: "cwl:draft-3"
 
 class: CommandLineTool
 
-description: CWL wrapped grep
+description: "command line: grep"
 
 inputs:
   

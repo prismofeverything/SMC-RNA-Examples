@@ -4,6 +4,8 @@ cwlVersion: "cwl:draft-3"
 
 class: CommandLineTool
 
+description: "command line: tar"
+
 inputs:
   - id: index
     type: File

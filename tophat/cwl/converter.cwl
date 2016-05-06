@@ -4,8 +4,7 @@ cwlVersion: "cwl:draft-3"
 
 class: CommandLineTool
 
-description: |
-  converter.cwl is developed for SMC-RNA Challenge
+description: "Convert tophat output to bedpe format"
 
 requirements:
   - class: InlineJavascriptRequirement

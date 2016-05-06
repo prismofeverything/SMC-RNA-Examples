@@ -4,9 +4,8 @@ cwlVersion: "cwl:draft-3"
 
 class: CommandLineTool
 
-description: "This tool is developed for SMC-RNA Challenge for detecting gene fusions (tophat fusion)"
+description: "Tophat Fusion Detection"
 
-#Import other CWL files
 requirements:
   - class: InlineJavascriptRequirement
   - class: DockerRequirement
@@ -15,12 +14,7 @@ requirements:
     coresMin: 8
     ramMin: 60000
 
-# The position determines where the commands are placed in command line
 inputs:
-
-  ## Not required fields ##
-  #Adding the ["null",type] allows you to designate a variable that is not required
-  #Don't input a prefix field and it won't display a prefix
 
   - id: r
     type: ["null",int]
@@ -66,7 +60,6 @@ inputs:
       position: 2
       prefix: --fusion-ignore-chromosomes
 
-  # Boolean values, shows prefix only
   - id: fusion-search
     type: ["null",boolean]
     description: | 
@@ -99,7 +92,6 @@ inputs:
       prefix: --no-coverage-search
       position: 2
 
-  ## Required files ##
   - id: fastq1
     type: File
     inputBinding:
@@ -110,7 +102,6 @@ inputs:
     inputBinding:
       position: 5
   
-  ## output of tophat is the directory ##
   - id: o
     type: string
     inputBinding:

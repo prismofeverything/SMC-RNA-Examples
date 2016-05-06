@@ -4,7 +4,7 @@ cwlVersion: "cwl:draft-3"
 
 class: CommandLineTool
 
-description: "This tool is developed for SMC-RNA Challenge for detecting gene fusions (STAR fusion)"
+description: "STAR Fusion Detection"
 
 requirements:
   - class: InlineJavascriptRequirement
@@ -13,7 +13,6 @@ requirements:
 
 inputs:
 
-  #Give it a list of input files
   - id: index
     type:
       type: array

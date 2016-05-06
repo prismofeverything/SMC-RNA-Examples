@@ -6,8 +6,7 @@ class: Workflow
 
 cwlVersion: "cwl:draft-3"
 
-description:
-  creates custom genome from reference genome and two phased VCF files SNPs and Indels
+description: "Isoform quantification workflow"
 
 inputs: 
 
@@ -25,7 +24,7 @@ outputs:
 
   - id: FUSION_OUTPUT
     type: File
-    source: "#rsem/output"
+    source: "#convert/output"
 
 steps:
 
@@ -46,5 +45,14 @@ steps:
     - {id: threads, default: 16}
     - {id: pairedend, default: true}
     - {id: strandspecific, default: true}
+    outputs:
+    - {id: output}
+
+  - id: convert
+    run: ../rsem/cwl/cut.cwl
+    inputs:
+    - {id: isoforms, source: "#rsem/output"}
+    - {id: output, default: isoform_quant.tsv}
+    - {id: f, default: 1,4}
     outputs:
     - {id: output}

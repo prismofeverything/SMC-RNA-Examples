@@ -4,7 +4,7 @@ cwlVersion: "cwl:draft-3"
 
 class: CommandLineTool
 
-description: "This tool is developed for SMC-RNA Challenge for detecting gene fusions (STAR fusion)"
+description: "STAR Aligner"
 
 requirements:
   - class: InlineJavascriptRequirement
@@ -15,13 +15,12 @@ requirements:
     ramMin: 80000
 
 inputs:
-  #Give it a list of input files
+
   - id: index
     type:
       type: array
       items: File
 
-  #readFilesIn takes in a array of files, but we require tumor1 and tumor2 input
   - id: fastq1
     type: File
     inputBinding:
@@ -136,22 +135,11 @@ inputs:
       prefix: --readFilesCommand
       position: 20
 
-  - id: quantMode
-    type: ["null",string]
-    inputBinding: 
-      prefix: --quantMode
-      position: 21
-
 outputs:
   - id: output
     type: File
     outputBinding:
       glob: 'Chimeric.out.junction'
-
-  - id: isoformoutput
-    type: ["null",File]
-    outputBinding:
-      glob: 'Aligned.toTranscriptome.out.bam'
 
 baseCommand: [STAR]
 arguments:
