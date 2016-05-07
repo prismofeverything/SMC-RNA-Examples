@@ -9,7 +9,7 @@ description: "RSEM isoform detection"
 requirements:
   - class: InlineJavascriptRequirement
   - class: DockerRequirement
-    dockerPull: thomasvyu/rsem
+    dockerPull: dreamchallenge/rsem
   - class: ResourceRequirement
     coresMin: 8
     ramMin: 80000
