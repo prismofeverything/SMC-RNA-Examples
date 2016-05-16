@@ -46,7 +46,7 @@ inputs:
   - id: threads
     type: ["null",int]
     inputBinding:
-      prefix: --p
+      prefix: -p
       position: 1
   
   - id: output
