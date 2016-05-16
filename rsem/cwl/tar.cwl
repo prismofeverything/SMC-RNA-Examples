@@ -18,6 +18,6 @@ outputs:
       type: array
       items: File
     outputBinding:
-      glob: "rsem_index/*"
+      glob: "rsem_references/*"
 
 baseCommand: [tar, xvzf]
