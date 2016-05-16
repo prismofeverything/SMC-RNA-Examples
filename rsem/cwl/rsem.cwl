@@ -50,9 +50,9 @@ inputs:
       position: 1
   
   - id: output
-  	type: string
-  	inputBinding:
-  	  position: 4
+    type: string
+    inputBinding:
+      position: 4
 
 outputs:
   - id: output
