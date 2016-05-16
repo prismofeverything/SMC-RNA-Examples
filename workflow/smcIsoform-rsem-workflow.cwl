@@ -53,6 +53,6 @@ steps:
     inputs:
     - {id: isoforms, source: "#rsem/output"}
     - {id: output, default: isoform_quant.tsv}
-    - {id: f, default: 1,4}
+    - {id: f, default: "1,4"}
     outputs:
     - {id: output}
