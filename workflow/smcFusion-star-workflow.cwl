@@ -4,7 +4,7 @@
 
 class: Workflow
 
-cwlVersion: "cwl:draft-3"
+cwlVersion: "draft-3"
 
 description:
   creates custom genome from reference genome and two phased VCF files SNPs and Indels
@@ -23,7 +23,7 @@ inputs:
     
 outputs:
 
-  - id: FUSION_OUTPUT
+  - id: OUTPUT
     type: File
     source: "#starfusion/output"
 
