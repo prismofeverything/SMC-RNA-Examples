@@ -8,11 +8,15 @@ cwlVersion: "cwl:draft-3"
 
 description: "Isoform quantification workflow"
 
+hints:
+  - class: synData
+    input: index
+    entity: syn6037390
+
 inputs: 
 
   - id: index
     type: File
-    synData: syn6037390
 
   - id: TUMOR_FASTQ_1
     type: File

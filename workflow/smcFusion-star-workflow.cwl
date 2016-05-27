@@ -9,11 +9,15 @@ cwlVersion: "draft-3"
 description:
   creates custom genome from reference genome and two phased VCF files SNPs and Indels
 
+hints:
+  - class: synData
+    input: index
+    entity: syn5987269
+
 inputs: 
 
   - id: index
     type: File
-    synData: syn5987269
 
   - id: TUMOR_FASTQ_1
     type: File
