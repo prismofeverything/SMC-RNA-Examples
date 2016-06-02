@@ -43,12 +43,6 @@ inputs:
       position: 0
       prefix: --strand-specific
 
-  - id: gzipped
-    type: ["null",boolean]
-    inputBinding:
-      position: 0
-      prefix: --gzipped-read-file
-
   - id: threads
     type: ["null",int]
     inputBinding:

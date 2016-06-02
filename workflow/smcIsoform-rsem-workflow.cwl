@@ -26,11 +26,25 @@ inputs:
     
 outputs:
 
-  - id: FUSION_OUTPUT
+  - id: OUTPUT
     type: File
     source: "#convert/output"
 
 steps:
+
+  - id: gunzip1
+    run: ../rsem/cwl/gunzip.cwl
+    inputs:
+    - {id: input, source: "#TUMOR_FASTQ_1"}
+    outputs:
+    - {id: output}
+
+  - id: gunzip2
+    run: ../rsem/cwl/gunzip.cwl
+    inputs:
+    - {id: input, source: "#TUMOR_FASTQ_2"}
+    outputs:
+    - {id: output}
 
   - id: tar
     run: ../rsem/cwl/tar.cwl
@@ -43,11 +57,10 @@ steps:
     run: ../rsem/cwl/rsem.cwl
     inputs:
     - {id: index, source: "#tar/output"}
-    - {id: fastq1, source: "#TUMOR_FASTQ_1"}
-    - {id: fastq2, source: "#TUMOR_FASTQ_2"}
+    - {id: fastq1, source: "#gunzip1/output"}
+    - {id: fastq2, source: "#gunzip2/output"}
     - {id: output, default: rsemOut}
     - {id: threads, default: 8}
-    - {id: gzipped, default: true}
     - {id: pairedend, default: true}
     - {id: strandspecific, default: true}
     outputs:
