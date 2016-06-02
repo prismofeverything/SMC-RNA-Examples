@@ -46,7 +46,8 @@ steps:
     - {id: fastq1, source: "#TUMOR_FASTQ_1"}
     - {id: fastq2, source: "#TUMOR_FASTQ_2"}
     - {id: output, default: rsemOut}
-    - {id: threads, default: 16}
+    - {id: threads, default: 8}
+    - {id: gzipped, default: true}
     - {id: pairedend, default: true}
     - {id: strandspecific, default: true}
     outputs:
