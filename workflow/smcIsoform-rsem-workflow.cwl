@@ -4,7 +4,7 @@
 
 class: Workflow
 
-cwlVersion: "cwl:draft-3"
+cwlVersion: "draft-3"
 
 description: "Isoform quantification workflow"
 
