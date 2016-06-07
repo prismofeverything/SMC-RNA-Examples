@@ -121,5 +121,5 @@ outputs:
 
 baseCommand: [tophat]
 arguments:
-  - valueFrom: $(inputs.bowtie_index[0].path.slice(0,-11))
+  - valueFrom: $(inputs.bowtie_index[0].path.split("/").slice(0,-1).join("/") + "/genome")
     position: 3
