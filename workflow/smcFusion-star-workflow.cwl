@@ -56,7 +56,7 @@ steps:
     - {id: align2, default: -1}
     - {id: align3, default: 5}
     - {id: align4, default: 5}
-    - {id: runThreadN, default: 16}
+    - {id: runThreadN, default: 5}
     - {id: limitBAMsortRAM, default: "31532137230"}
     - {id: outSAMtype, default: BAM}
     - {id: outSAMsecond, default: SortedByCoordinate}
