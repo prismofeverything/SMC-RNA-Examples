@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-RUN apt-get update
+RUN apt-get -y update
 RUN apt-get install -y curl wget g++ make python libboost-dev libboost-thread-dev libboost-system-dev zlib1g-dev ncurses-dev unzip gzip bzip2 libxml2-dev libxslt-dev python-dev python-pip git gcc libdb5.1 libdb5.1-dev
 RUN apt-get install -y samtools
 

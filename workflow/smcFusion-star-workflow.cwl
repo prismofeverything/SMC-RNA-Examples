@@ -75,3 +75,11 @@ steps:
     - {id: threads, default: 16}
     outputs:
     - {id: output}
+
+  - id: converttobedpe
+    run: ../star/cwl/converter.cwl
+    inputs:
+    - {id: input, source: "#starfusion/output"}
+    - {id: output, default: "output.bedpe"}
+    outputs:
+    - {id: fusionout}

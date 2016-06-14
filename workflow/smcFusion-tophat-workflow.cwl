@@ -64,7 +64,7 @@ steps:
     run: ../tophat/cwl/converter.cwl
     inputs:
     - {id: input, source: "#tophat/tophatOut"}
-    - {id: output, default: "output.txt"}
+    - {id: output, default: "output.bedpe"}
     outputs:
     - {id: fusionout}
 
