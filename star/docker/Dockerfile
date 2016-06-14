@@ -27,5 +27,8 @@ RUN wget http://research-pub.gene.com/gmap/src/gmap-gsnap-2016-04-04.tar.gz && \
 
 RUN cpan install URI::Escape 
 
+RUN git clone https://github.com/Sage-Bionetworks/SMC-RNA-Examples.git && \
+	cp SMC-RNA-Examples/star/scripts/convert_star_to_bedpe.py /usr/local/bin/
+
 ENV PATH /opt/STAR-Fusion/:/usr/local/bin/:/usr/bin:/bin
 
