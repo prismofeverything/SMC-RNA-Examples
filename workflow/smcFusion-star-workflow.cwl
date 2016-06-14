@@ -29,7 +29,7 @@ outputs:
 
   - id: OUTPUT
     type: File
-    source: "#starfusion/output"
+    source: "#converttobedpe/fusionout"
 
 steps:
 
@@ -72,7 +72,7 @@ steps:
     - {id: index, source: "#tar/output"}
     - {id: J, source: "#star/output"}
     - {id: output_dir, default: starOut}
-    - {id: threads, default: 16}
+    - {id: threads, default: 5}
     outputs:
     - {id: output}
 
