@@ -60,6 +60,7 @@ steps:
     - {id: limitBAMsortRAM, default: "31532137230"}
     - {id: outSAMtype, default: BAM}
     - {id: outSAMsecond, default: SortedByCoordinate}
+    - {id: readFilesCommand, default: zcat}
     - {id: index, source: "#tar/output"}
     - {id: fastq1, source: "#TUMOR_FASTQ_1"}
     - {id: fastq2, source: "#TUMOR_FASTQ_2"}
