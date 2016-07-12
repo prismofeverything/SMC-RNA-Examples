@@ -59,7 +59,7 @@ steps:
     - {id: index, source: "#tar/output"}
     - {id: fastq1, source: "#gunzip1/output"}
     - {id: fastq2, source: "#gunzip2/output"}
-    - {id: output, default: rsemOut}
+    - {id: output_filename, default: rsemOut}
     - {id: threads, default: 8}
     - {id: pairedend, default: true}
     - {id: strandspecific, default: true}
@@ -70,7 +70,7 @@ steps:
     run: ../rsem/cwl/cut.cwl
     inputs:
     - {id: isoforms, source: "#rsem/output"}
-    - {id: output, default: isoform_quant.tsv}
+    - {id: output_filename, default: isoform_quant.tsv}
     - {id: f, default: "1,6"}
     outputs:
     - {id: output}

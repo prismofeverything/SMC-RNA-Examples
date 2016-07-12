@@ -13,7 +13,7 @@ inputs:
     inputBinding:
       position: 1
 
-  - id: output
+  - id: output_filename
     type: string
 
   - id: f
@@ -26,8 +26,8 @@ outputs:
   - id: output
     type: File
     outputBinding:
-      glob: $(inputs.output)
+      glob: $(inputs.output_filename)
 
-stdout: $(inputs.output)
+stdout: $(inputs.output_filename)
 
 baseCommand: [cut]
