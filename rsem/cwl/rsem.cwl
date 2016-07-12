@@ -49,7 +49,7 @@ inputs:
       prefix: -p
       position: 1
   
-  - id: output
+  - id: output_filename
     type: string
     inputBinding:
       position: 4
@@ -58,7 +58,7 @@ outputs:
   - id: output
     type: File
     outputBinding:
-      glob: $(inputs.output + '.isoforms.results')
+      glob: $(inputs.output_filename + '.isoforms.results')
 
 
 baseCommand: [rsem-calculate-expression]
