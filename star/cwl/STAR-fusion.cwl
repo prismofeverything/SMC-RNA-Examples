@@ -8,7 +8,7 @@ doc: "STAR Fusion Detection"
 
 hints:
   DockerRequirement:
-    dockerPull: dreamchallenge:star
+    dockerPull: dreamchallenge/star
 
 requirements:
   - class: InlineJavascriptRequirement

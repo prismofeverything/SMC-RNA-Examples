@@ -10,7 +10,7 @@ doc: "Tophat: Fusion Detection"
 
 hints:
   DockerRequirement:
-    dockerPull: dreamchallenge:tophat
+    dockerPull: dreamchallenge/tophat
 
 requirements:
   - class: InlineJavascriptRequirement

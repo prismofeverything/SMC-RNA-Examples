@@ -10,7 +10,7 @@ doc: "RSEM: Isoform detection"
 
 hints:
   DockerRequirement:
-    dockerPull: dreamchallenge:rsem
+    dockerPull: dreamchallenge/rsem
 
 requirements:
   - class: InlineJavascriptRequirement

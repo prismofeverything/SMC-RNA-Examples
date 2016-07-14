@@ -9,7 +9,7 @@ doc: "Convert star fusion output to bedpe format"
 
 hints:
   DockerRequirement:
-    dockerPull: dreamchallenge:star
+    dockerPull: dreamchallenge/star
 
 requirements:
   - class: InlineJavascriptRequirement

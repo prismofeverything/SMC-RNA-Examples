@@ -10,7 +10,7 @@ doc: "samtools index"
 
 hints:
   DockerRequirement:
-    dockerPull: dreamchallenge:integrate
+    dockerPull: dreamchallenge/integrate
 
 requirements:
   - class: InlineJavascriptRequirement

@@ -11,7 +11,7 @@ doc: "Convert tophat output to bedpe format"
 
 hints:
   DockerRequirement:
-    dockerPull: dreamchallenge:tophat
+    dockerPull: dreamchallenge/tophat
 
 requirements:
   - class: InlineJavascriptRequirement

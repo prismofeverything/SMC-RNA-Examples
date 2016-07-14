@@ -8,7 +8,7 @@ doc: "STAR: Alignment"
 
 hints:
   DockerRequirement:
-    dockerPull: dreamchallenge:star
+    dockerPull: dreamchallenge/star
 
 requirements:
   - class: InlineJavascriptRequirement
