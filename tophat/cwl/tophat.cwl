@@ -15,8 +15,8 @@ hints:
 requirements:
   - class: InlineJavascriptRequirement
   - class: ResourceRequirement
-      coresMin: 8
-      ramMin: 60000
+    coresMin: 8
+    ramMin: 60000
 
 inputs:
 

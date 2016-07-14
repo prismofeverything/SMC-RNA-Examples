@@ -14,14 +14,11 @@ hints:
 
 inputs: 
 
-  index:
-    type: File
+  index: File
 
-  TUMOR_FASTQ_1:
-    type: File
+  TUMOR_FASTQ_1: File
 
-  TUMOR_FASTQ_2:
-    type: File
+  TUMOR_FASTQ_2: File
     
 outputs:
 
