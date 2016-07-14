@@ -46,7 +46,7 @@ steps:
       bowtie_index: tar/output
       fastq1: TUMOR_FASTQ_1
       fastq2: TUMOR_FASTQ_2
-    outputs: [tophatOut_accepted_hits]
+    outputs: [tophatOut_accepted_hits,tophatOut_unmapped]
   
   samtools_accepted:
     run: ../integrate/cwl/samtools_index.cwl
@@ -66,8 +66,8 @@ steps:
       accepted: samtools_accepted/out_index
       unmapped: samtools_unmapped/out_index
       reference: { default:     }
-      o: { default: fusions.bedpe }
-      index: {       }
+      o: { default: "fusions.bedpe" }
+      index: index
     outputs: [integrate_fusions]
 
 
