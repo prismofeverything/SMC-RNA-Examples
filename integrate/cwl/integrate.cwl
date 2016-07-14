@@ -20,20 +20,17 @@ requirements:
       coresMin: 8
       ramMin: 60000
 
-
-nohup ./INTEGRATE_0_2_5_test3/build/bin/Integrate fusion INTEGRATE_index/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa INTEGRATE_index/Homo_sapiens.GRCh37.75.txt INTEGRATE_index tophat_out/accepted_hits.bam tophat_out/unmapped.bam &
-
 inputs:
 
   accepted:
     type: File
     inputBinding:
-      position: 4
+      position: 5
 
   unmapped:
     type: File
     inputBinding:
-      position: 5
+      position: 6
   
   o:
     type: string
@@ -56,10 +53,10 @@ outputs:
 arguments:
   #reference.fasta
   - valueFrom: $(inputs.index[0].path.split("/").slice(0,-1).join("/") + "/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa")
-    position: 1
+    position: 2
   #annotation.txt
   - valueFrom: $(inputs.index[0].path.split("/").slice(0,-1).join("/") + "/Homo_sapiens.GRCh37.75.txt")
-    position: 2
+    position: 3
   #Directory to INTEGRATE index files
   - valueFrom: $(inputs.index[0].path.split("/").slice(0,-1).join("/"))
-    position: 3
+    position: 4
