@@ -1,8 +1,8 @@
 FROM ubuntu:14.04
 
 #Install Essentials
-RUN apt-get -y update
-RUN apt-get install -y cmake gcc wget zlib1g-dev libncurses5-dev libpthread-stubs0-dev
+RUN apt-get update
+RUN apt-get install -y cmake gcc g++ wget zlib1g-dev libncurses5-dev libpthread-stubs0-dev
 
 WORKDIR /opt
 

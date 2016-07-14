@@ -27,7 +27,7 @@ outputs:
 
   OUTPUT:
     type: File
-    outputSource: filterbedpe/output
+    outputSource: integrate/integrate_fusions
 
 steps:
 
@@ -35,7 +35,7 @@ steps:
     run: ../integrate/cwl/tar.cwl
     in:
       index: index
-    outputs: [output]
+    out: [output]
 
   tophat:
     run: ../tophat/cwl/tophat.cwl
@@ -46,38 +46,26 @@ steps:
       bowtie_index: tar/output
       fastq1: TUMOR_FASTQ_1
       fastq2: TUMOR_FASTQ_2
-    outputs: [tophatOut_accepted_hits,tophatOut_unmapped]
+    out: [tophatOut_accepted_hits,tophatOut_unmapped]
   
   samtools_accepted:
     run: ../integrate/cwl/samtools_index.cwl
     in:
       bam: tophat/tophatOut_accepted_hits
-    outputs: [out_index]
+    out: [out_index]
 
   samtools_unmapped:
     run: ../integrate/cwl/samtools_index.cwl
     in:
       bam: tophat/tophatOut_unmapped
-    outputs: [out_index]
+    out: [out_index]
 
   integrate:
     run: ../integrate/cwl/integrate.cwl
-    inputs:
+    in:
       accepted: samtools_accepted/out_index
       unmapped: samtools_unmapped/out_index
       reference: { default:     }
       o: { default: "fusions.bedpe" }
       index: index
-    outputs: [integrate_fusions]
-
-
-  filterbedpe:
-    run: ../tophat/cwl/grep.cwl
-    inputs:
-      input, source: "#converttobedpe/fusionout"}
-      v, default: true}
-      pattern, default: MT}
-    outputs:
-      output}
-
-arguments??
+    out: [integrate_fusions]
