@@ -28,49 +28,44 @@ outputs:
 
   - id: OUTPUT
     type: File
-    source: "#convert/output"
+    outputSource: convert/output
 
 steps:
 
   - id: gunzip1
     run: ../rsem/cwl/gunzip.cwl
-    inputs:
-    - {id: input, source: "#TUMOR_FASTQ_1"}
-    outputs:
-    - {id: output}
+    in:
+      input: TUMOR_FASTQ_1
+    outputs: [output]
 
   - id: gunzip2
     run: ../rsem/cwl/gunzip.cwl
     inputs:
-    - {id: input, source: "#TUMOR_FASTQ_2"}
-    outputs:
-    - {id: output}
+      input: TUMOR_FASTQ_2
+    outputs: [output]
 
   - id: tar
     run: ../rsem/cwl/tar.cwl
-    inputs:
-    - {id: index, source: "#index"}
-    outputs:
-    - {id: output}
+    in:
+      index: index
+    outputs: [output]
 
   - id: rsem
     run: ../rsem/cwl/rsem.cwl
-    inputs:
-    - {id: index, source: "#tar/output"}
-    - {id: fastq1, source: "#gunzip1/output"}
-    - {id: fastq2, source: "#gunzip2/output"}
-    - {id: output_filename, default: rsemOut}
-    - {id: threads, default: 8}
-    - {id: pairedend, default: true}
-    - {id: strandspecific, default: true}
-    outputs:
-    - {id: output}
+    in:
+      index: tar/output
+      fastq1: gunzip1/output
+      fastq2: gunzip2/output
+      output_filename: { default: rsemOut }
+      threads: { default: 8 }
+      pairedend: { default: true }
+      strandspecific: { default: true }
+    outputs: [output]
 
   - id: convert
     run: ../rsem/cwl/cut.cwl
-    inputs:
-    - {id: isoforms, source: "#rsem/output"}
-    - {id: output_filename, default: isoform_quant.tsv}
-    - {id: f, default: "1,6"}
-    outputs:
-    - {id: output}
+    in:
+      isoforms: rsem/output
+      output_filename: { default: isoform_quant.tsv }
+      f: { default: "1,6" }
+    outputs: [output]

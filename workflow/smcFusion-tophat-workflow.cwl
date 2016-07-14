@@ -3,11 +3,9 @@
 # Authors: Thomas Yu, Ryan Spangler, Kyle Ellrott
 
 class: Workflow
+cwlVersion: v1.0
 
-cwlVersion: "draft-3"
-
-description:
-  creates custom genome from reference genome and two phased VCF files SNPs and Indels
+doc: "tophat workflow: untar, tophat alignment, converting to bedpe, filter out bedpe"
 
 hints:
   - class: synData
@@ -16,63 +14,59 @@ hints:
 
 inputs: 
 
-  - id: index
+  index:
     type: File
 
-  - id: TUMOR_FASTQ_1
+  TUMOR_FASTQ_1:
     type: File
 
-  - id: TUMOR_FASTQ_2
+  TUMOR_FASTQ_2:
     type: File
     
 outputs:
 
-  - id: OUTPUT
+  OUTPUT:
     type: File
-    source: "#filterbedpe/output"
+    outputSource: "#filterbedpe/output"
 
 steps:
 
-  - id: tar
+  tar:
     run: ../tophat/cwl/tar.cwl
     inputs:
-    - {id: index, source: "#index"}  
-    outputs:
-    - {id: output}
+    index:, source: "#index"}  
+    outputs [output]
 
-  - id: tophat
+  tophat:
     run: ../tophat/cwl/tophat.cwl
-    inputs:
-    - {id: p, default: 5}
-    - {id: r, default: 0}
-    - {id: fusion-search, default: true}
-    - {id: keep-fasta-order, default: true}
-    - {id: bowtie1, default: true}
-    - {id: mate-std-dev, default: 80}
-    - {id: o, default: tophat_out}
-    - {id: max-intron-length, default: 100000}
-    - {id: fusion-min-dist, default: 100000}
-    - {id: fusion-anchor-length, default: 13}
-    - {id: fusion-ignore-chromosomes, default: chrM}
-    - {id: bowtie_index, source: "#tar/output"}
-    - {id: fastq1, source: "#TUMOR_FASTQ_1"}
-    - {id: fastq2, source: "#TUMOR_FASTQ_2"}
-    outputs:
-    - {id: tophatOut_fusions}
+    in:
+      p: { default: 5 }
+      r: { default: 0 }
+      fusion-search: { default: true }
+      keep-fasta-order: { default: true }
+      bowtie1: { default: true }
+      mate-std-dev: { default: 80 }
+      o: { default: tophat_out }
+      max-intron-length: { default: 100000 }
+      fusion-min-dist: { default: 100000 }
+      fusion-anchor-length: { default: 13 }
+      fusion-ignore-chromosomes: { default: chrM }
+      bowtie_index: tar/output
+      fastq1: TUMOR_FASTQ_1
+      fastq2: TUMOR_FASTQ_2
+    outputs [tophatOut_fusions]
 
-  - id: converttobedpe
+  converttobedpe:
     run: ../tophat/cwl/converter.cwl
-    inputs:
-    - {id: input, source: "#tophat/tophatOut_fusions"}
-    - {id: output, default: "output.bedpe"}
-    outputs:
-    - {id: fusionout}
+    in:
+      input: tophat/tophatOut_fusions
+      output: { default: "output.bedpe" }
+    outputs: [fusionout]
 
-  - id: filterbedpe
+  filterbedpe:
     run: ../tophat/cwl/grep.cwl
-    inputs:
-    - {id: input, source: "#converttobedpe/fusionout"}
-    - {id: v, default: true}
-    - {id: pattern, default: MT}
-    outputs:
-    - {id: output}
+    in:
+      input: converttobedpe/fusionout
+      v: { default: true }
+      pattern: { default: MT }
+    outputs [output]

@@ -27,58 +27,54 @@ outputs:
 
   OUTPUT:
     type: File
-    source: "#converttobedpe/fusionout"
+    outputSource: converttobedpe/fusionout
 
 steps:
 
   tar:
     run: ../star/cwl/tar.cwl
     inputs:
-    - {id: index, source: "#index"}
-    outputs:
-    - {id: output}
+      index: index
+    outputs: [output]
 
   - id: star
     run: ../star/cwl/STAR.cwl
     inputs:
-    - {id: twopassMode, default: Basic}
-    - {id: outReadsUnmapped, default: None}
-    - {id: chimSegmentMin, default: 12}
-    - {id: chimJunctionOverhangMin, default: 12}
-    - {id: alignSJDBoverhangMin, default: 10}
-    - {id: alignMatesGapMax, default: 200000}
-    - {id: alignIntronMax, default: 200000}
-    - {id: chimSegmentReadGapMax, default: parameter}
-    - {id: chim2, default: 3}
-    - {id: alignSJstitchMismatchNmax, default: 5}
-    - {id: align2, default: -1}
-    - {id: align3, default: 5}
-    - {id: align4, default: 5}
-    - {id: runThreadN, default: 5}
-    - {id: limitBAMsortRAM, default: "31532137230"}
-    - {id: outSAMtype, default: BAM}
-    - {id: outSAMsecond, default: SortedByCoordinate}
-    - {id: readFilesCommand, default: zcat}
-    - {id: index, source: "#tar/output"}
-    - {id: fastq1, source: "#TUMOR_FASTQ_1"}
-    - {id: fastq2, source: "#TUMOR_FASTQ_2"}
-    outputs:
-    - {id: output}
+      twopassMode: { default: Basic }
+      outReadsUnmapped: { default: None }
+      chimSegmentMin: { default: 12 }
+      chimJunctionOverhangMin: { default: 12 }
+      alignSJDBoverhangMin: { default: 10 }
+      alignMatesGapMax: { default: 200000 }
+      alignIntronMax: { default: 200000 }
+      chimSegmentReadGapMax: { default: parameter}
+      chim2: { default: 3 }
+      alignSJstitchMismatchNmax: { default: 5 }
+      align2: { default: -1 }
+      align3: { default: 5 }
+      align4: { default: 5 }
+      runThreadN: { default: 5 }
+      limitBAMsortRAM: { default : "31532137230" }
+      outSAMtype: { default: BAM }
+      outSAMsecond: { default: SortedByCoordinate }
+      readFilesCommand: { default: zcat }
+      index: tar/output
+      fastq1: TUMOR_FASTQ_1
+      fastq2: TUMOR_FASTQ_2
+    outputs: [output]
 
   - id: starfusion
     run: ../star/cwl/STAR-fusion.cwl
     inputs:
-    - {id: index, source: "#tar/output"}
-    - {id: J, source: "#star/output"}
-    - {id: output_dir, default: starOut}
-    - {id: threads, default: 5}
-    outputs:
-    - {id: output}
+      index: tar/output
+      J: star/output
+      output_dir: { default: starOut }
+      threads: { default: 5 }
+    outputs: [output]
 
   - id: converttobedpe
     run: ../star/cwl/converter.cwl
     inputs:
-    - {id: input, source: "#starfusion/output"}
-    - {id: output, default: "output.bedpe"}
-    outputs:
-    - {id: fusionout}
+      input: starfusion/output
+      output: { default: "output.bedpe" }
+    outputs: [fusionout]
