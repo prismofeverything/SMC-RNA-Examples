@@ -1,23 +1,24 @@
 #!/usr/bin/env cwl-runner
 
-cwlVersion: "draft-3"
-
+cwlVersion: v1.0
 class: CommandLineTool
+baseCommand: [tar, xvzf]
 
-description: "command line: tar"
+doc: "command line: tar"
 
 inputs:
-  - id: index
+
+  index:
     type: File
     inputBinding:
       position: 1
 
 outputs:
-  - id: output
+
+  output:
     type:
       type: array
       items: File
     outputBinding:
       glob: "star_index/*"
 
-baseCommand: [tar, xvzf]

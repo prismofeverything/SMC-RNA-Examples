@@ -1,32 +1,34 @@
 #!/usr/bin/env cwl-runner
+#
+# Authors: Thomas Yu, Ryan Spangler, Kyle Ellrott
 
-cwlVersion: "draft-3"
-
+cwlVersion: v1.0
 class: CommandLineTool
+baseCommand: [convert_tophat_to_bedpe.py]
+stdout: $(inputs.output)
 
-description: "Convert tophat output to bedpe format"
+doc: "Convert tophat output to bedpe format"
+
+hints:
+  DockerRequirement:
+    dockerPull: dreamchallenge:tophat
 
 requirements:
   - class: InlineJavascriptRequirement
-  - class: DockerRequirement
-    dockerPull: dreamchallenge/tophat
 
 inputs:
 
-  - id: input
+  input:
     type: File
     inputBinding:
       position: 1
 
-  - id: output
+  output:
     type: string
 
 outputs:
-  - id: fusionout
+
+  fusionout:
     type: File
     outputBinding:
       glob: $(inputs.output)
-
-stdout: $(inputs.output)
-
-baseCommand: [convert_tophat_to_bedpe.py]

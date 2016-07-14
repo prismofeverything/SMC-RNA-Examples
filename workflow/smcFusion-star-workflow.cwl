@@ -3,11 +3,9 @@
 # Authors: Thomas Yu, Ryan Spangler, Kyle Ellrott
 
 class: Workflow
+cwlVersion: v1.0
 
-cwlVersion: "draft-3"
-
-description:
-  creates custom genome from reference genome and two phased VCF files SNPs and Indels
+doc: "STAR workflow: untar, STAR align, STAR fusion detection, convert to bedpe format"
 
 hints:
   - class: synData
@@ -16,24 +14,24 @@ hints:
 
 inputs: 
 
-  - id: index
+  index:
     type: File
 
-  - id: TUMOR_FASTQ_1
+  TUMOR_FASTQ_1:
     type: File
 
-  - id: TUMOR_FASTQ_2
+  TUMOR_FASTQ_2:
     type: File
     
 outputs:
 
-  - id: OUTPUT
+  OUTPUT:
     type: File
     source: "#converttobedpe/fusionout"
 
 steps:
 
-  - id: tar
+  tar:
     run: ../star/cwl/tar.cwl
     inputs:
     - {id: index, source: "#index"}

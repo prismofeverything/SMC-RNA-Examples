@@ -1,67 +1,70 @@
 #!/usr/bin/env cwl-runner
+#
+# Authors: Thomas Yu, Ryan Spangler, Kyle Ellrott
 
-cwlVersion: "draft-3"
-
+cwlVersion: v1.0
 class: CommandLineTool
+baseCommand: [rsem-calculate-expression]
 
-description: "RSEM isoform detection"
+doc: "RSEM: Isoform detection"
+
+hints:
+  DockerRequirement:
+    dockerPull: dreamchallenge:rsem
 
 requirements:
   - class: InlineJavascriptRequirement
-  - class: DockerRequirement
-    dockerPull: dreamchallenge/rsem
   - class: ResourceRequirement
-    coresMin: 8
-    ramMin: 80000
+      coresMin: 8
+      ramMin: 80000
 
 inputs:
 
-  - id: index
+  index:
     type:
       type: array
       items: File
 
-  - id: fastq1
+  fastq1:
     type: File
     inputBinding:
       position: 2
 
-  - id: fastq2
+  fastq2:
     type: File
     inputBinding:
       position: 2
 
-  - id: pairedend
-    type: ["null",boolean]
+  pairedend:
+    type: boolean?
     inputBinding:
       position: 0
       prefix: --paired-end
 
-  - id: strandspecific
-    type: ["null",boolean]
+  strandspecific:
+    type: boolean?
     inputBinding:
       position: 0
       prefix: --strand-specific
 
-  - id: threads
-    type: ["null",int]
+  threads:
+    type: int?
     inputBinding:
       prefix: -p
       position: 1
   
-  - id: output_filename
+  output_filename:
     type: string
     inputBinding:
       position: 4
 
 outputs:
-  - id: output
+
+  output:
     type: File
     outputBinding:
       glob: $(inputs.output_filename + '.isoforms.results')
 
-
-baseCommand: [rsem-calculate-expression]
 arguments:
   - valueFrom: $(inputs.index[0].path.split("/").slice(0,-1).join("/") + "/GRCh37")
     position: 3

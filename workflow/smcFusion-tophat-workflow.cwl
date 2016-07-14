@@ -58,12 +58,12 @@ steps:
     - {id: fastq1, source: "#TUMOR_FASTQ_1"}
     - {id: fastq2, source: "#TUMOR_FASTQ_2"}
     outputs:
-    - {id: tophatOut}
+    - {id: tophatOut_fusions}
 
   - id: converttobedpe
     run: ../tophat/cwl/converter.cwl
     inputs:
-    - {id: input, source: "#tophat/tophatOut"}
+    - {id: input, source: "#tophat/tophatOut_fusions"}
     - {id: output, default: "output.bedpe"}
     outputs:
     - {id: fusionout}

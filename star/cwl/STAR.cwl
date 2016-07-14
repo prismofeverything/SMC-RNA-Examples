@@ -1,147 +1,149 @@
 #!/usr/bin/env cwl-runner
 
-cwlVersion: "draft-3"
-
+cwlVersion: v1.0
 class: CommandLineTool
+baseCommand: [STAR]
 
-description: "STAR Aligner"
+doc: "STAR: Alignment"
+
+hints:
+  DockerRequirement:
+    dockerPull: dreamchallenge:star
 
 requirements:
   - class: InlineJavascriptRequirement
-  - class: DockerRequirement
-    dockerPull: dreamchallenge/star
   - class: ResourceRequirement
-    coresMin: 8
-    ramMin: 80000
+      coresMin: 8
+      ramMin: 80000
 
 inputs:
 
-  - id: index
+  index:
     type:
       type: array
       items: File
 
-  - id: fastq1
+  fastq1:
     type: File
     inputBinding:
       position: 1
       prefix: --readFilesIn
 
-  - id: fastq2
+  fastq2:
     type: File
     inputBinding:
       position: 2
 
-  - id: twopassMode
-    type: ["null",string]
+  twopassMode:
+    type: string?
     inputBinding:
       position: 3
       prefix: --twopassMode
 
-  - id: outReadsUnmapped
-    type: ["null",string]
+  outReadsUnmapped:
+    type: string?
     inputBinding:
       prefix: --outReadsUnmapped
       position: 4
 
-  - id: chimSegmentMin
-    type: ["null",int]
+  chimSegmentMin:
+    type: int?
     inputBinding:
       prefix: --chimSegmentMin
       position: 5
 
-  - id: chimJunctionOverhangMin
-    type: ["null",int]
+  chimJunctionOverhangMin:
+    type: int?
     inputBinding:
       prefix: --chimJunctionOverhangMin
       position: 6
 
-  - id: alignSJDBoverhangMin
-    type: ["null",int]
+  alignSJDBoverhangMin:
+    type: int?
     inputBinding:
       prefix: --alignSJDBoverhangMin
       position: 7
 
-  - id: alignMatesGapMax
-    type: ["null",int]
+  alignMatesGapMax:
+    type: int?
     inputBinding:
       prefix: --alignMatesGapMax
       position: 8
 
-  - id: alignIntronMax
-    type: ["null",int]
+  alignIntronMax:
+    type: int?
     inputBinding:
       prefix: --alignIntronMax
       position: 9
       
-  - id: chimSegmentReadGapMax
-    type: ["null",string]
+  chimSegmentReadGapMax:
+    type: string?
     inputBinding:
       prefix: --chimSegmentReadGapMax
       position: 10
     
-  - id: chim2
-    type: ["null",int]
+  chim2:
+    type: int?
     inputBinding:
       position: 11
 
-  - id: alignSJstitchMismatchNmax
-    type: ["null",int]
+  alignSJstitchMismatchNmax:
+    type: int?
     inputBinding:
       prefix: --alignSJstitchMismatchNmax
       position: 12
       
-  - id: align2
-    type: ["null",int]
+  align2:
+    type: int?
     inputBinding:
       position: 13
       
-  - id: align3
-    type: ["null",int]
+  align3:
+    type: int?
     inputBinding:
       position: 14
       
-  - id: align4
-    type: ["null",int]
+  align4:
+    type: int?
     inputBinding:
       position: 15
 
-  - id: runThreadN
-    type: ["null",int]
+  runThreadN:
+    type: int?
     inputBinding:
       prefix: --runThreadN
       position: 16
       
-  - id: limitBAMsortRAM
-    type: ["null",string]
+  limitBAMsortRAM:
+    type: string?
     inputBinding:
       prefix: --limitBAMsortRAM
       position: 17
       
-  - id: outSAMtype
-    type: ["null",string]
+  outSAMtype:
+    type: string?
     inputBinding:
       prefix: --outSAMtype
       position: 18
 
-  - id: outSAMsecond
-    type: ["null",string]
+  outSAMsecond:
+    type: string?
     inputBinding:
       position: 19
 
-  - id: readFilesCommand
-    type: ["null",string]
+  readFilesCommand:
+    type: string?
     inputBinding:
       prefix: --readFilesCommand
       position: 20
 
 outputs:
-  - id: output
+
+  output:
     type: File
     outputBinding:
       glob: 'Chimeric.out.junction'
 
-baseCommand: [STAR]
 arguments:
   - valueFrom: $(inputs.index[0].path.split("/").slice(0,-1).join("/"))
     prefix: --genomeDir

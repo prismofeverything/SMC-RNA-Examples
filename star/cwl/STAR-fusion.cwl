@@ -1,48 +1,50 @@
 #!/usr/bin/env cwl-runner
 
-cwlVersion: "draft-3"
-
+cwlVersion: v1.0
 class: CommandLineTool
+baseCommand: [STAR-Fusion]
 
-description: "STAR Fusion Detection"
+doc: "STAR Fusion Detection"
+
+hints:
+  DockerRequirement:
+    dockerPull: dreamchallenge:star
 
 requirements:
   - class: InlineJavascriptRequirement
-  - class: DockerRequirement
-    dockerPull: dreamchallenge/star
 
 inputs:
 
-  - id: index
+  index:
     type:
       type: array
       items: File
 
-  - id: J
+  J:
     type: File
     inputBinding:
       prefix: -J
       position: 1
 
-  - id: output_dir
+  output_dir:
     type: string
     inputBinding:
       prefix: --output_dir
       position: 2
 
-  - id: threads
-    type: ["null",int]
+  threads:
+    type: int?
     inputBinding:
       prefix: --CPU
       position: 2
 
 outputs:
-  - id: output
+
+  output:
     type: File
     outputBinding:
       glob: $(inputs.output_dir+'/star-fusion.fusion_candidates.final.abridged')
 
-baseCommand: [STAR-Fusion]
 arguments:
   - valueFrom: $(inputs.index[0].path.split("/").slice(0,-1).join("/"))
     prefix: --genome_lib_dir

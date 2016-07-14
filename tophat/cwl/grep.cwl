@@ -1,36 +1,35 @@
 #!/usr/bin/env cwl-runner
+#
+# Authors: Thomas Yu, Ryan Spangler, Kyle Ellrott
 
-cwlVersion: "draft-3"
-
+cwlVersion: v1.0
 class: CommandLineTool
+baseCommand: [grep]
+stdout: filtered_fusion.bedpe
 
-description: "command line: grep"
+doc: "command line: grep"
 
 inputs:
   
-  - id: input
+  input:
     type: File
     inputBinding:
       position: 3
 
-  - id: v
-    type: ["null",boolean]
+  v:
+    type: boolean?
     inputBinding:
       prefix: -v
       position: 1
 
-  - id: pattern
+  pattern:
     type: string
     inputBinding:
       position: 2
 
 outputs:
-  - id: output
+
+  output:
     type: File
     outputBinding:
       glob: filtered_fusion.bedpe
-
-stdout: filtered_fusion.bedpe
-
-baseCommand: [grep]
-

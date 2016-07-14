@@ -1,125 +1,139 @@
 #!/usr/bin/env cwl-runner
+#
+# Authors: Thomas Yu, Ryan Spangler, Kyle Ellrott
 
-cwlVersion: "draft-3"
-
+cwlVersion: v1.0
 class: CommandLineTool
+baseCommand: [tophat]
 
-description: "Tophat Fusion Detection"
+doc: "Tophat: Fusion Detection"
+
+hints:
+  DockerRequirement:
+    dockerPull: dreamchallenge:tophat
 
 requirements:
   - class: InlineJavascriptRequirement
-  - class: DockerRequirement
-    dockerPull: dreamchallenge/tophat
   - class: ResourceRequirement
-    coresMin: 8
-    ramMin: 60000
+      coresMin: 8
+      ramMin: 60000
 
 inputs:
 
-  - id: r
-    type: ["null",int]
+  r:
+    type: int?
     inputBinding:
       position: 2
       prefix: -r
 
-  - id: p
-    type: ["null",int]
-    description: | 
+  p:
+    type: int?
+    doc: | 
       Change number of threads used
     inputBinding:
       position: 2
       prefix: -p
 
-  - id: mate-std-dev
-    type: ["null",int]
+  mate-std-dev:
+    type: int?
     inputBinding:
       position: 2
       prefix: --mate-std-dev
 
-  - id: max-intron-length
-    type: ["null",int]
+  max-intron-length:
+    type: int?
     inputBinding:
       position: 2
       prefix: --max-intron-length
 
-  - id: fusion-min-dist
-    type: ["null",int]
+  fusion-min-dist:
+    type: int?
     inputBinding:
       position: 2
       prefix: --fusion-min-dist
 
-  - id: fusion-anchor-length
-    type: ["null",int]
+  fusion-anchor-length:
+    type: int?
     inputBinding:
       position: 2
       prefix: --fusion-anchor-length
 
-  - id: fusion-ignore-chromosomes
-    type: ["null",string]
+  fusion-ignore-chromosomes:
+    type: string?
     inputBinding:
       position: 2
       prefix: --fusion-ignore-chromosomes
 
-  - id: fusion-search
-    type: ["null",boolean]
-    description: | 
+  fusion-search:
+    type: boolean?
+    doc: | 
       Turn on fusion algorithm (tophat-fusion)
     inputBinding:
       prefix: --fusion-search
       position: 2
 
-  - id: keep-fasta-order
-    type: ["null",boolean]
-    description: | 
+  keep-fasta-order:
+    type: boolean?
+    doc: | 
       Keep ordering of fastq file
     inputBinding:
       prefix: --keep-fasta-order
       position: 2
   
-  - id: bowtie1
-    type: ["null",boolean]
-    description: | 
+  bowtie1:
+    type: boolean?
+    doc: | 
       Use bowtie1
     inputBinding:
       prefix: --bowtie1
       position: 2
 
-  - id: no-coverage-search
-    type: ["null",boolean]
-    description: | 
+  no-coverage-search:
+    type: boolean?
+    doc: | 
       Turn off coverage-search, which takes lots of memory and is slow
     inputBinding:
       prefix: --no-coverage-search
       position: 2
 
-  - id: fastq1
+  fastq1:
     type: File
     inputBinding:
       position: 4
 
-  - id: fastq2
+  fastq2:
     type: File
     inputBinding:
       position: 5
   
-  - id: o
+  o:
     type: string
     inputBinding:
       prefix: -o
       position: 1
 
-  - id: bowtie_index
+  bowtie_index:
     type:
       type: array
       items: File
 
 outputs:
-  - id: tophatOut
+
+  tophatOut_fusions:
     type: File
     outputBinding:
       glob: $(inputs.o+'/fusions.out')
 
-baseCommand: [tophat]
+  tophatOut_accepted_hits:
+    type: File
+    outputBinding:
+      glob: $(inputs.o+'/accepted_hits.bam')
+
+  tophatOut_unmapped:
+    type: File
+    outputBinding:
+      glob: $(inputs.o+'/unmapped.bam')
+
 arguments:
   - valueFrom: $(inputs.bowtie_index[0].path.split("/").slice(0,-1).join("/") + "/genome")
     position: 3

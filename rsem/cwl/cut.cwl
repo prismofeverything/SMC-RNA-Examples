@@ -1,33 +1,33 @@
 #!/usr/bin/env cwl-runner
+#
+# Authors: Thomas Yu, Ryan Spangler, Kyle Ellrott
 
-cwlVersion: "draft-3"
-
+cwlVersion: v1.0
 class: CommandLineTool
+baseCommand: [cut]
+stdout: $(inputs.output_filename)
 
-description: "command line: cut"
+doc: "command line: cut"
 
 inputs:
 
-  - id: isoforms
+  isoforms:
     type: File
     inputBinding:
       position: 1
 
-  - id: output_filename
+  output_filename:
     type: string
 
-  - id: f
+  f:
     type: string
     inputBinding:
       position: 0
       prefix: -f
 
 outputs:
-  - id: output
+
+  output:
     type: File
     outputBinding:
       glob: $(inputs.output_filename)
-
-stdout: $(inputs.output_filename)
-
-baseCommand: [cut]
