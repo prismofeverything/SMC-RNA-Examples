@@ -3,8 +3,7 @@
 # Authors: Thomas Yu, Ryan Spangler, Kyle Ellrott
 
 class: Workflow
-
-cwlVersion: "draft-3"
+cwlVersion: v1.0
 
 description: "Isoform quantification workflow"
 
