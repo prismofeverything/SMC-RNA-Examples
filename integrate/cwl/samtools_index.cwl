@@ -26,6 +26,6 @@ inputs:
 outputs:
 
   out_index:
-    type: Fileq
+    type: File
     outputBinding:
       glob: $(inputs.bam.basename + ".bai")
