@@ -60,8 +60,8 @@ steps:
   integrate:
     run: ../integrate/cwl/integrate.cwl
     in:
-      accepted: samtools_accepted/out_index
-      unmapped: samtools_unmapped/out_index
+      accepted: tophat/tophatOut_accepted_hits
+      unmapped: tophat/tophatOut_unmapped
       o: { default: "fusions.bedpe" }
       index: tar/output
     out: [integrate_fusions]
