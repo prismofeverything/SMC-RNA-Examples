@@ -17,7 +17,7 @@ inputs:
   input:
     type: File
     inputBinding:
-      position: 0
+      position: 1
 
 outputs:
 

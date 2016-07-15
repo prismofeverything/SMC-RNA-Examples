@@ -15,10 +15,7 @@ requirements:
 
 inputs:
 
-  index:
-    type:
-      type: array
-      items: File
+  index: Directory
 
   J:
     type: File

@@ -18,10 +18,7 @@ requirements:
 
 inputs:
 
-  index:
-    type:
-      type: array
-      items: File
+  index: Directory
 
   fastq1:
     type: File

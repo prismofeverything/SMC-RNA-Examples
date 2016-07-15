@@ -21,8 +21,7 @@ inputs:
     inputBinding:
       position: 1
 
-  output:
-    type: string
+  output: string
 
 outputs:
 
