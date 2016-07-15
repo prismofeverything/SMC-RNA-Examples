@@ -14,8 +14,6 @@ hints:
 
 requirements:
   - class: InlineJavascriptRequirement
-    expressionLib:
-    - "var new_ext = function() { var ext=inputs.bai?'.bai':inputs.csi?'.csi':'.bai'; return inputs.input.path.split('/').slice(-1)[0]+ext; };"
 
 inputs:
 
@@ -24,9 +22,10 @@ inputs:
     inputBinding:
       position: 1
 
+
 outputs:
 
   out_index:
     type: Fileq
     outputBinding:
-      glob: $(new_ext())
+      glob: $(inputs.bam.basename + ".bai")
