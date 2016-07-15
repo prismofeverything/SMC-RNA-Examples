@@ -32,10 +32,10 @@ outputs:
 steps:
 
   tar:
-    run: ../tophat/cwl/tar.cwl
-    inputs:
-    index:, source: "#index"}  
-    outputs [output]
+    run: ../general_tools/tar.cwl
+    in:
+      input: index
+    outputs: [output]
 
   tophat:
     run: ../tophat/cwl/tophat.cwl

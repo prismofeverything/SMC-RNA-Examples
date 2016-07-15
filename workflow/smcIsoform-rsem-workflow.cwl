@@ -43,10 +43,10 @@ steps:
       input: TUMOR_FASTQ_2
     outputs: [output]
 
-  - id: tar
-    run: ../rsem/cwl/tar.cwl
+  tar:
+    run: ../general_tools/tar.cwl
     in:
-      index: index
+      input: index
     outputs: [output]
 
   - id: rsem

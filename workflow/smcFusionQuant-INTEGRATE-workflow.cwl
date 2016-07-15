@@ -29,9 +29,9 @@ outputs:
 steps:
 
   tar:
-    run: ../integrate/cwl/tar.cwl
+    run: ../general_tools/tar.cwl
     in:
-      index: index
+      input: index
     out: [output]
 
   tophat:
@@ -62,7 +62,6 @@ steps:
     in:
       accepted: samtools_accepted/out_index
       unmapped: samtools_unmapped/out_index
-      reference: { default:     }
       o: { default: "fusions.bedpe" }
-      index: index
+      index: tar/output
     out: [integrate_fusions]

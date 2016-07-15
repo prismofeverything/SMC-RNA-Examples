@@ -132,5 +132,5 @@ outputs:
       glob: $(inputs.o+'/unmapped.bam')
 
 arguments:
-  - valueFrom: $(inputs.bowtie_index.listing.path + "/genome")
+  - valueFrom: $(inputs.bowtie_index.listing[0].path + "/genome")
     position: 3

@@ -145,6 +145,6 @@ outputs:
       glob: 'Chimeric.out.junction'
 
 arguments:
-  - valueFrom: $(inputs.index[0].path.split("/").slice(0,-1).join("/"))
+  - valueFrom: $(inputs.index.listing[0].path)
     prefix: --genomeDir
     position: 0

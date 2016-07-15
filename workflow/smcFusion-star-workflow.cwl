@@ -32,9 +32,9 @@ outputs:
 steps:
 
   tar:
-    run: ../star/cwl/tar.cwl
-    inputs:
-      index: index
+    run: ../general_tools/tar.cwl
+    in:
+      input: index
     outputs: [output]
 
   - id: star

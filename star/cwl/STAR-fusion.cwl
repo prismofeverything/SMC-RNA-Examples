@@ -46,6 +46,6 @@ outputs:
       glob: $(inputs.output_dir+'/star-fusion.fusion_candidates.final.abridged')
 
 arguments:
-  - valueFrom: $(inputs.index[0].path.split("/").slice(0,-1).join("/"))
+  - valueFrom: $(inputs.index.listing[0].path)
     prefix: --genome_lib_dir
     position: 0

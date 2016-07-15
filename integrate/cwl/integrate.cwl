@@ -49,11 +49,11 @@ outputs:
 
 arguments:
   #reference.fasta
-  - valueFrom: $(inputs.index.listing.path + "/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa")
+  - valueFrom: $(inputs.index.listing[0].path + "/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa")
     position: 2
   #annotation.txt
-  - valueFrom: $(inputs.index.listing.path + "/Homo_sapiens.GRCh37.75.txt")
+  - valueFrom: $(inputs.index.listing[0].path + "/Homo_sapiens.GRCh37.75.txt")
     position: 3
   #Directory to INTEGRATE index files
-  - valueFrom: $(inputs.index.listing.path)
+  - valueFrom: $(inputs.index.listing[0].path)
     position: 4

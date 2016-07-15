@@ -66,5 +66,5 @@ outputs:
       glob: $(inputs.output_filename + '.isoforms.results')
 
 arguments:
-  - valueFrom: $(inputs.index[0].path.split("/").slice(0,-1).join("/") + "/GRCh37")
+  - valueFrom: $(inputs.index.listing[0].path + "/GRCh37")
     position: 3
