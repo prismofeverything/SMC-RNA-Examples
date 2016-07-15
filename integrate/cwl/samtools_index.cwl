@@ -22,10 +22,13 @@ inputs:
     inputBinding:
       position: 1
 
-
 outputs:
 
   out_index:
     type: File
     outputBinding:
       glob: $(inputs.bam.basename + ".bai")
+
+arguments:
+  - valueFrom: $(inputs.bam.basename + ".bai")
+    position: 2
