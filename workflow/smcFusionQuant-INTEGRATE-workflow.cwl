@@ -7,6 +7,9 @@ cwlVersion: v1.0
 
 doc: "INTEGRATE workflow: untar, tophat align, samtools index, Integrate fusion"
 
+requirements:
+  - class: MultipleInputFeatureRequirement
+
 hints:
   - class: synData
     input: index
