@@ -112,10 +112,7 @@ inputs:
       prefix: -o
       position: 1
 
-  bowtie_index:
-    type:
-      type: array
-      items: File
+  bowtie_index: Directory
 
 outputs:
 
@@ -135,5 +132,5 @@ outputs:
       glob: $(inputs.o+'/unmapped.bam')
 
 arguments:
-  - valueFrom: $(inputs.bowtie_index[0].path.split("/").slice(0,-1).join("/") + "/genome")
+  - valueFrom: $(inputs.bowtie_index.listing.path + "/genome")
     position: 3

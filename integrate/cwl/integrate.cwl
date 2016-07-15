@@ -38,10 +38,7 @@ inputs:
       prefix: -bedpe
       position: 1
 
-  index:
-    type:
-      type: array
-      items: File
+  index: Directory
 
 outputs:
 
@@ -58,5 +55,5 @@ arguments:
   - valueFrom: $(inputs.index[0].path.split("/").slice(0,-1).join("/") + "/Homo_sapiens.GRCh37.75.txt")
     position: 3
   #Directory to INTEGRATE index files
-  - valueFrom: $(inputs.index[0].path.split("/").slice(0,-1).join("/"))
+  - valueFrom: $(inputs.index.listing.path)
     position: 4

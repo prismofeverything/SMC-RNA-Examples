@@ -18,8 +18,6 @@ inputs:
 outputs:
 
   output:
-    type:
-      type: array
-      items: File
+    type: Directory
     outputBinding:
-      glob: "INTEGRATE_index/*"
+      glob: .
