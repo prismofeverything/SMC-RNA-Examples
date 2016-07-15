@@ -27,4 +27,8 @@ outputs:
   out_index:
     type: File
     outputBinding:
-      glob: $(inputs.bam+'.bai')
+      glob: $(inputs.bam.basename+'.bai')
+
+arguments:
+  - valueFrom: $(inputs.bam.path + ".bai")
+    position: 2
