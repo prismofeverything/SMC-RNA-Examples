@@ -25,10 +25,11 @@ inputs:
 outputs:
 
   out_index:
-    type: File
+    type: Directory
     outputBinding:
-      glob: $(inputs.bam.basename + ".bai")
+      glob: .
+  #    glob: $(inputs.bam.basename + ".bai")
 
-arguments:
-  - valueFrom: $(inputs.bam.basename + ".bai")
-    position: 2
+#arguments:
+#  - valueFrom: $(inputs.bam.basename + ".bai")
+#    position: 2

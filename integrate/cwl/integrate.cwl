@@ -22,15 +22,19 @@ requirements:
 
 inputs:
 
-  accepted:
-    type: File
-    inputBinding:
-      position: 5
+  accepted: Directory
+   # type:
+   #   type: array
+   #   items: File
+    #inputBinding:
+    #  position: 5
 
-  unmapped:
-    type: File
-    inputBinding:
-      position: 6
+  unmapped: Directory
+   # type:
+   #   type: array
+   #   items: File
+    #inputBinding:
+    #  position: 6
   
   o:
     type: string
@@ -48,6 +52,11 @@ outputs:
       glob: $(inputs.o)
 
 arguments:
+
+  - valueFrom: $(inputs.accepted.listing[0].path + "/accepted_hits.bam")
+    position: 5
+  - valueFrom: $(inputs.unmapped.listing.[0].path + "/unmapped.bam")
+    position: 6
   #reference.fasta
   - valueFrom: $(inputs.index.listing[0].path + "/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa")
     position: 2
