@@ -22,20 +22,31 @@ requirements:
 
 inputs:
 
-  accepted:
-    type:
-      type: array
-      items: File
+  #accepted:
+  #  type:
+  #    type: array
+  #    items: File
     #inputBinding:
     #  position: 5
 
-  unmapped:
-    type:
-      type: array
-      items: File
+  accepted: Directory
+    #inputBinding:
+    #  position: 5
+
+  #unmapped:
+  #  type:
+  #    type: array
+  #    items: File
     #inputBinding:
     #  position: 6
   
+  unmapped: Directory
+  #  type:
+  #    type: array
+  #    items: File
+    #inputBinding:
+    #  position: 6
+    
   o:
     type: string
     inputBinding:
