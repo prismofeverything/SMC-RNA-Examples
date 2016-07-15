@@ -117,7 +117,7 @@ inputs:
 outputs:
 
   tophatOut_fusions:
-    type: File
+    type: File?
     outputBinding:
       glob: $(inputs.o+'/fusions.out')
 
