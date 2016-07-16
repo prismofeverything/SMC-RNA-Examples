@@ -18,7 +18,11 @@ inputs:
 
 outputs: 
   
-  output: []
+  output: 
+    type: string
+    outputBinding:
+      glob: "temp"
+
 
 arguments:
   - valueFrom: $(inputs.index.location.replace("file://",""))
