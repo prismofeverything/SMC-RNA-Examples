@@ -28,13 +28,6 @@ outputs:
     type: File
     outputBinding:
       glob: $(inputs.bam.basename + ".bai")
-    #secondaryFiles:
-    #  - .bai
-
-#  out_index:
-#    type: Directory
-#    outputBinding:
-#      glob: .
 
 arguments:
   - valueFrom: $(inputs.bam.basename + ".bai")
