@@ -24,15 +24,17 @@ inputs:
 
 outputs:
 
- # out_index:
- #   type: File
- #   outputBinding:
- #     glob: $(inputs.bam.basename + ".bai")
-
   out_index:
-    type: Directory
+    type: File
     outputBinding:
-      glob: .
+      glob: $(inputs.bam.basename)
+    secondaryFiles:
+      - .bai
+
+ # out_index:
+ #   type: Directory
+ #   outputBinding:
+ #     glob: .
 
 arguments:
   - valueFrom: $(inputs.bam.basename + ".bai")
