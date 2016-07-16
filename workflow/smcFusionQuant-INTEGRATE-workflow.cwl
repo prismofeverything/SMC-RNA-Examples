@@ -60,20 +60,6 @@ steps:
       bam: tophat/tophatOut_unmapped
     out: [out_index]
 
-  cp_accepted:
-    run: ../integrate/cwl/cp.cwl
-    in:
-      index: samtools_accepted/out_index
-      bam: tophat/tophatOut_accepted_hits
-    out: [output]
-
-  cp_unmapped:
-    run: ../integrate/cwl/cp.cwl
-    in:
-      index: samtools_unmapped/out_index
-      bam: tophat/tophatOut_unmapped
-    out: [output]
-
   integrate:
     run: ../integrate/cwl/integrate.cwl
     in:

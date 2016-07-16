@@ -14,6 +14,10 @@ hints:
 
 requirements:
   - class: InlineJavascriptRequirement
+  - class: InitialWorkDirRequirement
+    listing: 
+      - entryname: $(inputs.bam.basename)
+        entry: $(inputs.bam.location.replace("file://",""))
 
 inputs:
 
@@ -27,7 +31,9 @@ outputs:
   out_index:
     type: File
     outputBinding:
-      glob: $(inputs.bam.basename + ".bai")
+      glob: $(inputs.bam.basename)
+    secondaryFiles:
+      - .bai
 
 arguments:
   - valueFrom: $(inputs.bam.basename + ".bai")
