@@ -60,11 +60,28 @@ steps:
       bam: tophat/tophatOut_unmapped
     out: [out_index]
 
+
+######
+  cp_accepted:
+    run: ../integrate/cwl/cp.cwl
+    in:
+      index: samtools_accepted/out_index
+      bam: tophat/tophatOut_accepted_hits
+    out: []
+
+  cp_unmapped:
+    run: ../integrate/cwl/cp.cwl
+    in:
+      index: samtools_unmapped/out_index
+      bam: tophat/tophatOut_unmapped
+    out: []
+#####
+
   integrate:
     run: ../integrate/cwl/integrate.cwl
     in:
-      accepted: [tophat/tophatOut_accepted_hits,samtools_accepted/out_index]
-      unmapped: [tophat/tophatOut_unmapped,samtools_unmapped/out_index]
+      accepted: tophat/tophatOut_accepted_hits
+      unmapped: tophat/tophatOut_unmapped
       o: { default: "fusions.bedpe" }
       index: tar/output
     out: [integrate_fusions]

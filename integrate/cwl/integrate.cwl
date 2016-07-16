@@ -29,9 +29,16 @@ inputs:
     #inputBinding:
     #  position: 5
 
-  accepted: Directory
+#  accepted: Directory
     #inputBinding:
     #  position: 5
+
+  accepted:
+    type: File
+    inputBinding:
+      position: 5
+    secondaryFiles:
+      - .bai
 
   #unmapped:
   #  type:
@@ -40,12 +47,19 @@ inputs:
     #inputBinding:
     #  position: 6
   
-  unmapped: Directory
+ # unmapped: Directory
   #  type:
   #    type: array
   #    items: File
     #inputBinding:
     #  position: 6
+  
+  unmapped:
+    type: File
+    inputBinding:
+      position: 6
+    secondaryFiles:
+      - .bai
 
   o:
     type: string
