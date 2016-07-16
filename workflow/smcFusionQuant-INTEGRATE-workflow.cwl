@@ -60,8 +60,6 @@ steps:
       bam: tophat/tophatOut_unmapped
     out: [out_index]
 
-
-######
   cp_accepted:
     run: ../integrate/cwl/cp.cwl
     in:
@@ -75,7 +73,6 @@ steps:
       index: samtools_unmapped/out_index
       bam: tophat/tophatOut_unmapped
     out: []
-#####
 
   integrate:
     run: ../integrate/cwl/integrate.cwl
