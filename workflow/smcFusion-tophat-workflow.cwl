@@ -35,7 +35,7 @@ steps:
     run: ../general_tools/tar.cwl
     in:
       input: index
-    outputs: [output]
+    out: [output]
 
   tophat:
     run: ../tophat/cwl/tophat.cwl
@@ -54,14 +54,14 @@ steps:
       bowtie_index: tar/output
       fastq1: TUMOR_FASTQ_1
       fastq2: TUMOR_FASTQ_2
-    outputs [tophatOut_fusions]
+    out: [tophatOut_fusions]
 
   converttobedpe:
     run: ../tophat/cwl/converter.cwl
     in:
       input: tophat/tophatOut_fusions
       output: { default: "output.bedpe" }
-    outputs: [fusionout]
+    out: [fusionout]
 
   filterbedpe:
     run: ../tophat/cwl/grep.cwl
@@ -69,4 +69,4 @@ steps:
       input: converttobedpe/fusionout
       v: { default: true }
       pattern: { default: MT }
-    outputs [output]
+    out [output]
