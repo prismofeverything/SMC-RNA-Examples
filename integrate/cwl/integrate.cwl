@@ -46,7 +46,7 @@ inputs:
   #    items: File
     #inputBinding:
     #  position: 6
-    
+
   o:
     type: string
     inputBinding:
@@ -64,9 +64,9 @@ outputs:
 
 arguments:
 
-  - valueFrom: $(inputs.accepted[0].path.split("/").slice(0,-1).join("/") + "/accepted_hits.bam")
+  - valueFrom: $(inputs.accepted.listing.path + "/accepted_hits.bam")
     position: 5
-  - valueFrom: $(inputs.unmapped[0].path.split("/").slice(0,-1).join("/") + "/unmapped.bam")
+  - valueFrom: $(inputs.unmapped.listing.path + "/unmapped.bam")
     position: 6
   #reference.fasta
   - valueFrom: $(inputs.index.listing[0].path + "/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa")
