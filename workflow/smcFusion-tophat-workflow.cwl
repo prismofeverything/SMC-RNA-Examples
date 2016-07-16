@@ -69,4 +69,4 @@ steps:
       input: converttobedpe/fusionout
       v: { default: true }
       pattern: { default: MT }
-    out [output]
+    out: [output]
