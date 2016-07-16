@@ -22,37 +22,12 @@ requirements:
 
 inputs:
 
-  #accepted:
-  #  type:
-  #    type: array
-  #    items: File
-    #inputBinding:
-    #  position: 5
-
-#  accepted: Directory
-    #inputBinding:
-    #  position: 5
-
   accepted:
     type: File
     inputBinding:
       position: 5
     secondaryFiles:
       - .bai
-
-  #unmapped:
-  #  type:
-  #    type: array
-  #    items: File
-    #inputBinding:
-    #  position: 6
-  
- # unmapped: Directory
-  #  type:
-  #    type: array
-  #    items: File
-    #inputBinding:
-    #  position: 6
   
   unmapped:
     type: File
@@ -78,10 +53,6 @@ outputs:
 
 arguments:
 
-  #- valueFrom: $(inputs.accepted.listing[0].path + "/accepted_hits.bam")
-  #  position: 5
-  #- valueFrom: $(inputs.unmapped.listing[0].path + "/unmapped.bam")
-  #  position: 6
   #reference.fasta
   - valueFrom: $(inputs.index.listing[0].path + "/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa")
     position: 2

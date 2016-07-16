@@ -23,7 +23,6 @@ outputs:
     outputBinding:
       glob: "temp"
 
-
 arguments:
   - valueFrom: $(inputs.index.location.replace("file://",""))
     position: 1
