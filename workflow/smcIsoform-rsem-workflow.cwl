@@ -39,7 +39,7 @@ steps:
 
   gunzip2:
     run: ../rsem/cwl/gunzip.cwl
-    inputs:
+    in:
       input: TUMOR_FASTQ_2
     out: [output]
 
