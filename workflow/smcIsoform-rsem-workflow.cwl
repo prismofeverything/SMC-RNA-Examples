@@ -26,8 +26,8 @@ inputs:
 outputs:
 
   - id: OUTPUT
-    type: File
-    outputSource: convert/output
+      type: File
+      outputSource: convert/output
 
 steps:
 
