@@ -14,20 +14,17 @@ hints:
 
 inputs: 
 
-  - id: index
-    type: File
+  index: File
 
-  - id: TUMOR_FASTQ_1
-    type: File
+  TUMOR_FASTQ_1: File
 
-  - id: TUMOR_FASTQ_2
-    type: File
+  TUMOR_FASTQ_2: File
     
 outputs:
 
-  - id: OUTPUT
-      type: File
-      outputSource: convert/output
+  OUTPUT:
+    type: File
+    outputSource: convert/output
 
 steps:
 
