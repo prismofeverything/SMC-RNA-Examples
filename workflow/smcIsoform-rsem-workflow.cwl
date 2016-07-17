@@ -31,25 +31,25 @@ outputs:
 
 steps:
 
-  - id: gunzip1
+  gunzip1:
     run: ../rsem/cwl/gunzip.cwl
     in:
       input: TUMOR_FASTQ_1
-    outputs: [output]
+    out: [output]
 
-  - id: gunzip2
+  gunzip2:
     run: ../rsem/cwl/gunzip.cwl
     inputs:
       input: TUMOR_FASTQ_2
-    outputs: [output]
+    out: [output]
 
   tar:
     run: ../general_tools/tar.cwl
     in:
       input: index
-    outputs: [output]
+    out: [output]
 
-  - id: rsem
+  rsem:
     run: ../rsem/cwl/rsem.cwl
     in:
       index: tar/output
@@ -59,12 +59,12 @@ steps:
       threads: { default: 8 }
       pairedend: { default: true }
       strandspecific: { default: true }
-    outputs: [output]
+    out: [output]
 
-  - id: convert
+  convert:
     run: ../rsem/cwl/cut.cwl
     in:
       isoforms: rsem/output
       output_filename: { default: isoform_quant.tsv }
       f: { default: "1,6" }
-    outputs: [output]
+    out: [output]
