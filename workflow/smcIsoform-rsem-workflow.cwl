@@ -5,7 +5,7 @@
 class: Workflow
 cwlVersion: v1.0
 
-description: "Isoform quantification workflow"
+doc: "Isoform quantification workflow"
 
 hints:
   - class: synData
