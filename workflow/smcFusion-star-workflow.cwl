@@ -35,11 +35,11 @@ steps:
     run: ../general_tools/tar.cwl
     in:
       input: index
-    outputs: [output]
+    out: [output]
 
-  - id: star
+  star:
     run: ../star/cwl/STAR.cwl
-    inputs:
+    in:
       twopassMode: { default: Basic }
       outReadsUnmapped: { default: None }
       chimSegmentMin: { default: 12 }
@@ -61,20 +61,20 @@ steps:
       index: tar/output
       fastq1: TUMOR_FASTQ_1
       fastq2: TUMOR_FASTQ_2
-    outputs: [output]
+    out: [output]
 
-  - id: starfusion
+  starfusion:
     run: ../star/cwl/STAR-fusion.cwl
-    inputs:
+    in:
       index: tar/output
       J: star/output
       output_dir: { default: starOut }
       threads: { default: 5 }
-    outputs: [output]
+    out: [output]
 
-  - id: converttobedpe
+  converttobedpe:
     run: ../star/cwl/converter.cwl
-    inputs:
+    in:
       input: starfusion/output
       output: { default: "output.bedpe" }
-    outputs: [fusionout]
+    out: [fusionout]
