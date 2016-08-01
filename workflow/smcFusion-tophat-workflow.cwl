@@ -32,9 +32,9 @@ outputs:
 steps:
 
   tar:
-    run: ../general_tools/tar.cwl
+    run: ../tophat/cwl/tar.cwl
     in:
-      input: index
+      index: index
     out: [output]
 
   tophat:
